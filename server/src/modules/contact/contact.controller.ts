@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { IContact } from "./contact.interface";
 import {
   createContactsServ,
   deleteContactsServ,
@@ -37,7 +36,7 @@ export const deleteContact = async (req: Request, res: Response) => {
     const { contact } = await deleteContactsServ({ id });
     return res.status(200).json({ contact });
   } catch (err) {
-    return res.status(400).json({ err });
+    return res.status(400).json({ err: "Something went wrong, please try again" });
   }
 };
 
@@ -50,6 +49,6 @@ export const updateContact = async (req: Request, res: Response) => {
     const { contact } = await updateContactsServ(body);
     return res.status(200).json({ contact });
   } catch (err) {
-    return res.status(400).json({ err });
+    return res.status(400).json({ err: "Something went wrong, please try again" });
   }
 };
