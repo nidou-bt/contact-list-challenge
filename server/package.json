@@ -9,6 +9,7 @@
     "server": "nodemon dist/index.js",
     "start": "concurrently \"npm run build\" \"nodemon dist/index.js\""
   },
+
   "keywords": [
     "express",
     "typescript",
@@ -30,5 +31,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }
