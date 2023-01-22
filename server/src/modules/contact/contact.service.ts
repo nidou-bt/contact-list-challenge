@@ -12,9 +12,28 @@ export const createContactsServ = async ({ body }: { body: IContact }) => {
   const contact = await prisma.contact.create({
     data: body,
   });
-  return { contact: contact };  
+  if (!contact) {
+    throw new Error();
+  }
+  return { contact: contact };
 };
 
-export const updateContactsServ = async () => {};
+export const updateContactsServ = async ({
+  id,
+  ...body
+}: Partial<IContact>) => {
+  const contact = await prisma.contact.update({
+    where: { id: id },
+    data: body,
+  });
+  return { contact };
+};
 
-export const deleteContactsServ = async () => {};
+export const deleteContactsServ = async ({ id }: { id: number }) => {
+  const contact = await prisma.contact.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+  return { contact };
+};

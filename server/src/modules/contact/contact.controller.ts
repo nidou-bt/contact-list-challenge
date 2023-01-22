@@ -1,20 +1,54 @@
 import { Request, Response } from "express";
-import { createContactsServ, getContactsServ } from "./contact.service";
+import { IContact } from "./contact.interface";
+import {
+  createContactsServ,
+  deleteContactsServ,
+  getContactsServ,
+  updateContactsServ,
+} from "./contact.service";
 
 export const getContacts = async (req: Request, res: Response) => {
   try {
     const { contacts } = await getContactsServ();
     return res.status(200).json({ data: contacts });
   } catch (err) {
-    return res.status(400).json({ err });
+    return res
+      .status(400)
+      .json({ err: "Something went wrong, please try again" });
   }
 };
-export const addContacts = async (req: Request, res: Response) => {
-    console.log('req', req.body)
+
+export const addContact = async (req: Request, res: Response) => {
   try {
     const body = req.body;
     const { contact } = await createContactsServ({ body });
     return res.status(200).json({ data: contact });
+  } catch (err) {
+    return res
+      .status(400)
+      .json({ err: "Something went wrong, please try again" });
+  }
+};
+
+export const deleteContact = async (req: Request, res: Response) => {
+  try {
+    const { contactId } = req.params;
+    const id = Number(contactId);
+    const { contact } = await deleteContactsServ({ id });
+    return res.status(200).json({ contact });
+  } catch (err) {
+    return res.status(400).json({ err });
+  }
+};
+
+export const updateContact = async (req: Request, res: Response) => {
+  try {
+    const body = req.body;
+    const { contactId } = req.params;
+    body.id = Number(contactId);
+
+    const { contact } = await updateContactsServ(body);
+    return res.status(200).json({ contact });
   } catch (err) {
     return res.status(400).json({ err });
   }
