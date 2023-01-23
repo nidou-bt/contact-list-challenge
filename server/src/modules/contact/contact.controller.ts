@@ -20,7 +20,6 @@ export const getContacts = async (req: Request, res: Response) => {
 
 export const addContact = async (req: Request, res: Response) => {
   try {
-    console.log("body", req.body);
     const body: IContact = req.body;
     if (req.file) {
       body.picture = req.file.filename;

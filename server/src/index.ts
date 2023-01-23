@@ -1,9 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
-import multer  from 'multer';
 import contactRoute from "./routes/contact.route";
-
 
 dotenv.config();
 const PORT = process.env.PORT as String;

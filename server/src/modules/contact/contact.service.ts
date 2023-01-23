@@ -9,7 +9,6 @@ export const getContactsServ = async () => {
 };
 
 export const createContactsServ = async (body: IContact) => {
-  console.log("body", body);
   const contact = await prisma.contact.create({
     data: body,
   });
