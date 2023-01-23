@@ -1,21 +1,26 @@
 import React from "react";
-// import { getContactList } from "../api/contactApi";
-// import useFetchQuery from "../hooks/useFetchQuery";
+import "./home.css";
+import { getContactList } from "../api/contactApi";
+import useFetchQuery from "../hooks/useFetchQuery";
+import ContactCard from "components/home/ContactCard";
 
 const Home = () => {
-  // const { data, isError, isLoading } = useFetchQuery({
-  //   category: "contact",
-  //   fetchApi: getContactList,
-  // });
+  const { data, isError, isLoading } = useFetchQuery({
+    category: "contact",
+    fetchApi: getContactList,
+  });
 
-  return <div>
-    {/* {
-      !isError && !isLoading && data?.map((item, i) => {
-        return <p key={item.id}>{item.name} </p>
-      })
-    } */}
-    hi
-  </div>;
+  return (
+    <div className="home">
+      <div className="main_list item">
+        {!isError &&
+          !isLoading &&
+          data?.map((item) => {
+            return <ContactCard {...item} key={item.id} />;
+          })}
+      </div>
+    </div>
+  );
 };
 
 export default Home;

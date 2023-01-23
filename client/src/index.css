@@ -13,10 +13,16 @@
     @apply font-Lexend not-italic font-normal text-lg tracking-[1] text-white
   }
   .body {
-    @apply font-Lexend not-italic font-normal text-base tracking-[1]
+    @apply font-Lexend not-italic font-normal text-base tracking-[1] text-white
   }
   .message {
-    @apply font-Lexend not-italic font-norma text-sm tracking-[1]
+    @apply font-Lexend not-italic font-normal text-sm tracking-[1] text-white
+  }
+  .box {
+    @apply border-[1px] border-[white]
+  }
+  .container {
+    @apply max-w-[768px] w-[80vw]
   }
     
   }

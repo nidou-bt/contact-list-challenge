@@ -1,0 +1,11 @@
+.home {
+  display: grid;
+  grid-template-columns: 1fr min(768px, 80vw) 1fr;
+  height: min(100vh);
+}
+.item {
+  border: 1px solid #282828;
+}
+.main_list {
+  grid-column: 2;
+}
