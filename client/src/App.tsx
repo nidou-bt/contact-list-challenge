@@ -1,10 +1,13 @@
 import './App.css';
+import Home from './pages/Home';
+import Navbar from './shared/Navbar';
 
 function App() {
   return (
-    <div>
-      contact app
-    </div>
+    <>
+      <Navbar />
+      <Home />
+    </>
   );
 }
 
