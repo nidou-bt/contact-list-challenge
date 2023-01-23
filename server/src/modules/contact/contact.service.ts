@@ -8,7 +8,8 @@ export const getContactsServ = async () => {
   return { contacts };
 };
 
-export const createContactsServ = async ({ body }: { body: IContact }) => {
+export const createContactsServ = async (body: IContact) => {
+  console.log("body", body);
   const contact = await prisma.contact.create({
     data: body,
   });
