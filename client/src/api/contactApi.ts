@@ -13,3 +13,11 @@ export const getContactList = async (): Promise<IContact[] | undefined> => {
     console.log(err);
   }
 };
+export const deleteContactList = async ({id}: {id: number}): Promise<IContact | undefined> => {
+  try {
+    const { data } = await axiosC.delete(`/api/contact/${id}`);
+    return data.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
