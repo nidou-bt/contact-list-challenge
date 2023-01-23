@@ -1,4 +1,4 @@
-import { IContact } from "types/type";
+import { IContact } from "../types/type";
 import axios from "axios";
 
 const axiosC = axios.create({

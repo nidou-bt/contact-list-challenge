@@ -1,10 +1,10 @@
 import React from "react";
-import Icon from "components/UI/Icon";
-import backArrow from "assets/icons/backArrow.png";
-import lightMode from "assets/icons/lightMode.png";
-import setting from "assets/icons/settings.png";
-import icon from "assets/icons/icon.png";
-import add from "assets/icons/add.png";
+import Icon from "../components/UI/Icon";
+import backArrow from "../assets/icons/backArrow.png";
+import lightMode from "../assets/icons/lightMode.png";
+import setting from "../assets/icons/settings.png";
+import icon from "../assets/icons/icon.png";
+import add from "../assets/icons/add.png";
 
 const Navbar = () => {
   return (

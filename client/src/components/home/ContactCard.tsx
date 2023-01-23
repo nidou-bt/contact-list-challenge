@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IContact } from "types/type";
-import Icon from 'components/UI/Icon'
+import { IContact } from "../../types/type";
+import Icon from '../../components/UI/Icon'
 import profileS from "assets/icons/profileS.png";
 import More from "assets/icons/More.png";
 import Mute from "assets/icons/Mute.png";
