@@ -2,7 +2,7 @@ import multer from 'multer';
 import path from'path';
 
 const storage=multer.diskStorage({
-    destination:'../client/assets/uploads',
+    destination:'../client/src/assets/uploads',
     filename:function(req,file,cb){
         cb(null,file.fieldname+"-"+Date.now()+path.extname(file.originalname))
     }
