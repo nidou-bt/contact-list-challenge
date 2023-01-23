@@ -53,10 +53,17 @@ export const updateContact = async (req: Request, res: Response) => {
     const body = req.body;
     const { contactId } = req.params;
     body.id = Number(contactId);
+    if (req.file) {
+      body.picture = req.file.filename;
+    }
+    if (body.phoneNumber) {
+      body.phoneNumber = Number(body.phoneNumber);
+    }
 
     const { contact } = await updateContactsServ(body);
     return res.status(200).json({ contact });
   } catch (err) {
+    console.log(err);
     return res
       .status(400)
       .json({ err: "Something went wrong, please try again" });
