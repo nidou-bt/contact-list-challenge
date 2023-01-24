@@ -11,7 +11,7 @@ interface IProps {
   page?: number;
   fetchApi:
     | MutationFunction<
-        unknown,
+        IContact|undefined,
         {
           id: number;
         }
@@ -25,7 +25,7 @@ const useDeleteApi = ({ category, fetchApi }: IProps) => {
     mutate,
     isError,
     isLoading,
-  }: UseMutationResult<unknown, void, { id: number }> = useMutation({
+  }: UseMutationResult<IContact|undefined, void, { id: number }> = useMutation({
     mutationFn: fetchApi,
     // onError: (error, variables, { id }) => {
     //   console.log(`rolling back optimistic delete with id ${id}`);

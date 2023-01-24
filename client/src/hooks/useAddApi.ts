@@ -1,7 +1,43 @@
-import React from 'react'
+import {
+  MutationFunction,
+  QueryKey,
+  useMutation,
+  UseMutationResult,
+  useQueryClient,
+} from "@tanstack/react-query";
+import { IContact } from "../types/type";
 
-const useAddApi = () => {
-  return 
+interface IProps {
+  category: QueryKey;
+  fetchApi: MutationFunction<IContact | undefined, IContact>;
 }
 
-export default useAddApi
+const useAddApi = ({ category, fetchApi }: IProps) => {
+  const queryClient = useQueryClient();
+  const {
+    mutate,
+    isError,
+    isLoading,
+  }: UseMutationResult<IContact | undefined, void, IContact> = useMutation({
+    mutationFn: fetchApi,
+    // onError: (error, variables, { id }) => {
+    //   console.log(`rolling back optimistic delete with id ${id}`);
+    // },
+    onSuccess: (data, variables, context) => {
+      if (data) {
+        queryClient.setQueryData<IContact[]>([category], (oldQueryData) => {
+          if (oldQueryData) {
+            return [...oldQueryData, data];
+          }
+        });
+      }
+    },
+  });
+  return {
+    mutate,
+    isError,
+    isLoading,
+  };
+};
+
+export default useAddApi;

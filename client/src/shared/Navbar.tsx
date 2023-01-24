@@ -1,6 +1,5 @@
 import React from "react";
 import Icon from "../components/UI/Icon";
-
 import setting from "../assets/icons/settings.png";
 import icon from "../assets/icons/icon.png";
 import add from "../assets/icons/add.png";
@@ -13,7 +12,7 @@ const Navbar = () => {
         <div className="flex items-center gap-x-[2vw] sm:gap-x-[28px]">
           <Icon src={setting} variant="icon" />
           <Icon src={icon} variant="icon" />
-          <button className="flex justify-between items-center gap-x-[13px] bg-black-60 rounded-lg sm:rounded-full px-[12px] py-[16px] max-w-[120px] h-[40px] hover:bg-black-50 active:bg-black-40">
+          <button className="flex justify-between items-center gap-x-[13px] bg-black-60 rounded-lg sm:rounded-full px-[12px] py-[16px] max-w-[120px] h-[40px] border-[1px] border-black-20 hover:bg-black-50 active:bg-black-40">
             <div className="block sm:hidden md:block">
               <Icon src={add} variant="button" />
             </div>
