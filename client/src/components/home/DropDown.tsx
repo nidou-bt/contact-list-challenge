@@ -22,8 +22,9 @@ function DropDown({ children, mutate }: any) {
         leave="transition ease-in duration-75"
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
+        
       >
-        <Menu.Items className="absolute right-0 md:left-0 top-[45px]  z-10 w-[90vw] max-w-[219px] origin-top-right rounded-lg bg-black-80 shadow-lg ring-black ring-opacity-5  focus:outline-none active:ring-offset-current">
+        <Menu.Items className="absolute right-0 lg:left-0 top-[45px]  z-10 w-[90vw] max-w-[219px] origin-top-right rounded-lg bg-black-80 shadow-lg ring-black ring-opacity-5  focus:outline-none active:ring-offset-current">
           <div className="">
             <Menu.Item>
               {({ active }) => (

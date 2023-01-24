@@ -4,7 +4,7 @@ import Icon from "./Icon";
 type IButton = ButtonHTMLAttributes<HTMLButtonElement> & {
   src: string;
   active: boolean;
-  variant: "icon" | "profil" | "dropdown"
+  variant: "icon" | "profil" | "dropdown";
 };
 
 function classNames(...classes: any) {
@@ -12,7 +12,6 @@ function classNames(...classes: any) {
 }
 
 function Button({ src, active, variant, ...props }: IButton): JSX.Element {
-
   return (
     <button
       className={classNames(
@@ -21,7 +20,10 @@ function Button({ src, active, variant, ...props }: IButton): JSX.Element {
       )}
       {...props}
     >
-      {src ? <Icon src={src} /> : null}
+      <div className="w-[20px] flex items-center justify-center">
+        {src ? <Icon src={src} /> : null}
+      </div>
+
       <p className="body capitalize">{props.children}</p>
     </button>
   );

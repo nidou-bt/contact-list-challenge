@@ -3,11 +3,12 @@ import { IContact } from "../../types/type";
 import Icon from "../../components/UI/Icon";
 import profileS from "../../assets/icons/profileS.png";
 import More from "../../assets/icons/More.png";
-import Mute from "../../assets/icons/Mute.png";
+// import Mute from "../../assets/icons/Mute.png";
 import Call from "../../assets/icons/call.png";
 import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
 import { deleteContactList } from "../../api/contactApi";
+import Mute from '../../assets/icons/mute.svg'
 
 interface IProps extends IContact {}
 
@@ -15,6 +16,11 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const { mutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContactList({id})});
 
+  const handleHover = () => {
+    setTimeout(() => {
+      setIsHover(false)
+    }, 1000);
+  }
   return (
     <div
       className="flex m-[15px] sm:m-[24px] justify-between items-center"
@@ -41,7 +47,8 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
       >
         <Icon src={Mute} variant="icon" />
         <Icon src={Call} variant="icon" />
-        <DropDown mutate={mutate}>
+        <DropDown mutate={mutate}       onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}>
           <Icon src={More} variant="icon" />
         </DropDown>
       </div>
