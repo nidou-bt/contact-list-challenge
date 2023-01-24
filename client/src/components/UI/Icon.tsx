@@ -13,12 +13,12 @@ const Icon = ({ src, variant }: TProps) => {
       alt={src ?? "icon"}
       className={
         variant === "icon"
-          ? "w-[20px]"
+          ? "w-[20px] hover:cursor-pointer"
           : variant === "profil"
-          ? "h-[40px]"
+          ? "h-[40px] hover:cursor-pointer"
           : variant === "dropdown"
-          ? "h-[20px] text-black-50"
-          : "h-[16px]"
+          ? "h-[20px] hover:cursor-pointer"
+          : "h-[16px] hover:cursor-pointer"
       }
     />
   );

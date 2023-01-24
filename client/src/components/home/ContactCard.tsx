@@ -5,7 +5,7 @@ import profileS from "../../assets/icons/profileS.png";
 import More from "../../assets/icons/More.png";
 import Mute from "../../assets/icons/Mute.png";
 import Call from "../../assets/icons/call.png";
-import Example from "./DropDown";
+import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
 import { deleteContactList } from "../../api/contactApi";
 
@@ -17,7 +17,7 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
 
   return (
     <div
-      className="flex m-[24px] justify-between items-center"
+      className="flex m-[15px] sm:m-[24px] justify-between items-center"
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
@@ -41,9 +41,9 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
       >
         <Icon src={Mute} variant="icon" />
         <Icon src={Call} variant="icon" />
-        <Example mutate={mutate}>
+        <DropDown mutate={mutate}>
           <Icon src={More} variant="icon" />
-        </Example>
+        </DropDown>
       </div>
     </div>
   );
