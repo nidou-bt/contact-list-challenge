@@ -4,22 +4,22 @@
 
 @layer components {
   .h1 {
-    @apply font-Glysa font-medium text-2xl tracking-[0] text-white
+    @apply font-Glysa font-medium text-xl md:text-2xl tracking-[0] text-white
   }
   .h2 {
     @apply font-Glysa font-medium text-xl tracking-[0] text-white
   }
   .h3 {
-    @apply font-Lexend not-italic font-normal text-lg tracking-[1] text-white
+    @apply font-Lexend not-italic font-normal text-lg tracking-[0.01em] text-white
   }
   .body {
-    @apply font-Lexend not-italic font-normal text-base tracking-[1] text-white
+    @apply font-Lexend not-italic font-normal text-base tracking-[0.01em] text-white
   }
   .message {
-    @apply font-Lexend not-italic font-normal text-sm tracking-[1] text-white
+    @apply font-Lexend not-italic font-normal text-sm tracking-[0.01em] text-white
   }
   .box {
-    @apply border-[1px] border-[white]
+    @apply border-[1px] border-black-60
   }
   /* .container {
     @apply max-w-[768px] w-[80vw]

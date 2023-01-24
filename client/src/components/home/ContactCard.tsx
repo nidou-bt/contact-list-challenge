@@ -38,15 +38,14 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
       </div>
       <div
         className={
-          true
+          isHover
             ? "flex h-[20px] justify-between gap-[20px] items-center"
             : "hidden"
         }
       >
         <Icon src={Mute} variant="icon" />
         <Icon src={Call} variant="icon" />
-        <DropDown mutate={mutate}       onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}>
+        <DropDown mutate={mutate}>
           <Icon src={More} variant="icon" />
         </DropDown>
       </div>

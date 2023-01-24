@@ -2,7 +2,7 @@ import React from "react";
 
 type TProps = {
   src: string;
-  variant?: "icon" | "profil" | "dropdown";
+  variant?: "icon" | "profil" | "dropdown" | "button";
 };
 
 const Icon = ({ src, variant }: TProps) => {
@@ -13,12 +13,14 @@ const Icon = ({ src, variant }: TProps) => {
       alt={src ?? "icon"}
       className={
         variant === "icon"
-          ? "w-[20px] hover:cursor-pointer"
+          ? "w-[20px] hover:cursor-pointer max-w-none"
           : variant === "profil"
-          ? "h-[40px] hover:cursor-pointer"
+          ? "h-[40px] hover:cursor-pointer max-w-none"
           : variant === "dropdown"
-          ? "h-[20px] hover:cursor-pointer"
-          : "h-[16px] hover:cursor-pointer"
+          ? "h-[20px] hover:cursor-pointer max-w-none"
+          : variant === "button"
+          ? "h-[13.5px] hover:cursor-pointer max-w-none"
+          : "h-[16px] hover:cursor-pointer max-w-none"
       }
     />
   );

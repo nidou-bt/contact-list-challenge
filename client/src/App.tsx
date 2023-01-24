@@ -7,41 +7,25 @@ import lightMode from "./assets/icons/lightMode.png";
 
 function App() {
   return (
-    <div
-      className="bg-black-100 min-h-[100vh] grid grid-cols-main grid-rows-main"
-    >
-      <div style={{ border: "1px solid #282828" }}></div>
-      <div style={{ border: "1px solid #282828" }}></div>
-      <div style={{ border: "1px solid #282828" }}></div>
+    <div className="bg-black-100 min-h-[100vh] grid grid-cols-main grid-rows-main">
+      <div className="box" />
+      <div className="box" />
+      <div className="box" />
       <div
-        style={{
-          display: "flex",
-          border: "1px solid #282828",
-          borderTop: "none",
-          borderBottom: "none",
-          justifyContent:"flex-end",
-          paddingRight:"35px",
-          alignItems:"center",
-          
-        }}
+        className="box flex justify-end pr-[3vw] sm:pr-[35px] items-center border-r-[1px] border-t-0 border-b-0 "
       >
         <Icon src={backArrow} variant="icon" />
       </div>
       <Navbar />
-      <div style={{
-          display: "flex",
-          border: "1px solid #282828",
-          borderTop: "none",
-          borderBottom: "none",
-          justifyContent:"flex-start",
-          paddingLeft:"35px",
-          alignItems:"center"
-        }}>
+      <div
+
+        className="box flex justify-start pl-[3vw] sm:pl-[35px] items-center border-r-[1px] border-t-0 border-b-0"
+      >
         <Icon src={lightMode} variant="icon" />
       </div>
-      <div style={{ border: "1px solid #282828" }}></div>
+      <div className="box" />
       <Home />
-      <div style={{ border: "1px solid #282828" }}></div>
+      <div className="box" />
     </div>
   );
 }

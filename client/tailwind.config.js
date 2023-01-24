@@ -38,7 +38,7 @@ module.exports = {
     },
     spacing: {
       0: "0%",
-      1: "0.01em",
+      1: "1px",
     },
   },
   plugins: [],
