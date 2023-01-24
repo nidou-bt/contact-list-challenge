@@ -21,8 +21,8 @@
   .box {
     @apply border-[1px] border-[white]
   }
-  .container {
+  /* .container {
     @apply max-w-[768px] w-[80vw]
-  }
+  } */
     
   }

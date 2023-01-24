@@ -1,16 +1,17 @@
 import React from "react";
 import Icon from "../components/UI/Icon";
-import backArrow from "../assets/icons/backArrow.png";
-import lightMode from "../assets/icons/lightMode.png";
+
+
 import setting from "../assets/icons/settings.png";
 import icon from "../assets/icons/icon.png";
 import add from "../assets/icons/add.png";
 
 const Navbar = () => {
   return (
-    <nav className="font-Glysa text-2xl flex h-[96px] justify-center items-center">
-      <Icon src={backArrow} />
-      <div className="container md:w-[90vw] box p-[26px] flex justify-between items-center">
+
+      
+    <nav className="font-Glysa text-2xl flex h-[96px] justify-center items-center w-full">
+      <div className="border-x-[1px] border-black-60 md:w-[90vw] p-[26px] w-full flex justify-between items-center">
         <h1 className="h1 ">Contacts</h1>
         <div className="flex items-center gap-x-[28px]">
           <Icon src={setting} />
@@ -23,8 +24,8 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <Icon src={lightMode} />
     </nav>
+
   );
 };
 
