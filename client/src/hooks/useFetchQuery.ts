@@ -8,7 +8,7 @@ interface IProps {
 }
 
 const useFetchQuery = ({ category, page = 1, fetchApi }: IProps) => {
-  const { data, isLoading, isError } : UseQueryResult<IContact[], void> = useQuery({
+  const { data = [], isLoading, isError } : UseQueryResult<IContact[], void> = useQuery({
     queryKey: [category, page],
     queryFn: fetchApi,
     staleTime: Infinity,

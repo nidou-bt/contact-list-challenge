@@ -11,8 +11,8 @@ const Home = () => {
   });
 
   return (
-    <div className="home">
-      <div className="main_list item">
+    <div className="home container">
+      <div className="main_list">
         {!isError &&
           !isLoading &&
           data?.map((item) => {

@@ -1,13 +1,13 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(" ");
-}
+import setting from "../../assets/icons/settings.png";
+import favourite from "../../assets/icons/favourite.png";
+import Delete from "../../assets/icons/add.png";
+import Button from "../UI/button";
 
 export default function Example({ children, mutate }: any) {
   return (
-    <Menu as="div" className="relative inline-block text-left">
+    <Menu as="div" className="relative inline-block text-left ">
       <div>
         <Menu.Button className="justify-center items-center focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
           {children}
@@ -23,45 +23,37 @@ export default function Example({ children, mutate }: any) {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          <div className="py-1">
+        <Menu.Items className="absolute right-0 z-10  w-[219px] origin-top-right rounded-md bg-black-80 shadow-lg ring-black ring-opacity-5  focus:outline-none active:ring-offset-current">
+          <div className="">
             <Menu.Item>
               {({ active }) => (
-                <a
-                  onClick={() => {}}
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  edit
-                </a>
+                <Button
+                  src={setting}
+                  active={active}
+                  children="edit"
+                  variant="dropdown"
+                />
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
-                  onClick={() => {}}
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  favorite
-                </a>
+                <Button
+                  src={favourite}
+                  active={active}
+                  children="favorite"
+                  variant="dropdown"
+                />
               )}
             </Menu.Item>
             <Menu.Item>
               {({ active }) => (
-                <a
+                <Button
+                  src={Delete}
+                  active={active}
+                  children="delete"
+                  variant="dropdown"
                   onClick={mutate}
-                  className={classNames(
-                    active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                    "block px-4 py-2 text-sm"
-                  )}
-                >
-                  delete
-                </a>
+                />
               )}
             </Menu.Item>
           </div>

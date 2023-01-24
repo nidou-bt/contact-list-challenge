@@ -1,11 +1,11 @@
 .home {
-  display: grid;
-  grid-template-columns: 1fr min(768px, 80vw) 1fr;
-  height: min(100vh);
+  grid-column: 2;
+  grid-row: 3;
 }
 .item {
   border: 1px solid #282828;
+  height:96px
 }
-.main_list {
-  grid-column: 2;
+.container {
+  border: 1px solid #282828;
 }

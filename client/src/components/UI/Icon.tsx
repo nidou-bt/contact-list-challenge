@@ -2,16 +2,24 @@ import React from "react";
 
 type TProps = {
   src: string;
-  variant?: "icon" | "profil";
+  variant?: "icon" | "profil" | "dropdown";
 };
 
 const Icon = ({ src, variant }: TProps) => {
-  console.log('src', src)
+
   return (
     <img
       src={src}
-      alt={src ?? ""}
-      className={variant === "icon" ? "w-[20px]": variant === "profil" ? "h-[40px]" : "h-[16px]"}
+      alt={src ?? "icon"}
+      className={
+        variant === "icon"
+          ? "w-[20px]"
+          : variant === "profil"
+          ? "h-[40px]"
+          : variant === "dropdown"
+          ? "h-[20px] text-black-50"
+          : "h-[16px]"
+      }
     />
   );
 };

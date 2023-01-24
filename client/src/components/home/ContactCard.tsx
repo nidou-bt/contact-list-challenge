@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { IContact } from "../../types/type";
 import Icon from "../../components/UI/Icon";
-import profileS from "assets/icons/profileS.png";
-import More from "assets/icons/More.png";
-import Mute from "assets/icons/Mute.png";
-import Call from "assets/icons/call.png";
+import profileS from "../../assets/icons/profileS.png";
+import More from "../../assets/icons/More.png";
+import Mute from "../../assets/icons/Mute.png";
+import Call from "../../assets/icons/call.png";
 import Example from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
 import { deleteContactList } from "../../api/contactApi";
@@ -23,7 +23,7 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
     >
       <div className="flex gap-[16px]">
         <img
-          src={profileS}
+          src={picture ? `../../assets/uploads/${picture}`: profileS}
           alt="profile"
           className="border-[1px] border-[#282828] rounded-full w-[40px]"
         />
