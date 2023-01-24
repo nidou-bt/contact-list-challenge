@@ -1,12 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.tsx",
-  ],
+  content: ["./src/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        main: "1fr min(80vw, 768px) 1fr",
+      },
+      gridTemplateRows: {
+        main: "96px 96px 80vh ",
+      },
+    },
     colors: {
-      'black': {
+      black: {
         100: "#141414",
         90: "#191919",
         80: "#1E1E1E",
@@ -16,26 +21,25 @@ module.exports = {
         40: "#323232",
         30: "#373737",
         20: "#3C3C3C",
-        10: "#414141"
+        10: "#414141",
       },
-      white: "#FFFFFF"
+      white: "#FFFFFF",
     },
     fontFamily: {
-      Glysa: 'Glysa',
-      Lexend: 'Lexend Deca',
+      Glysa: "Glysa",
+      Lexend: "Lexend Deca",
     },
     fontSize: {
-      sm: ['12px', '12px'],
-      base: ['14px', '20px'],
-      lg: ['16px', '24px'],
-      xl: ['24px', '40px'],
-      '2xl': ['32px', '48px'],
+      sm: ["12px", "12px"],
+      base: ["14px", "20px"],
+      lg: ["16px", "24px"],
+      xl: ["24px", "40px"],
+      "2xl": ["32px", "48px"],
     },
     spacing: {
-      '0': '0%',
-      '1': '0.01em',
-
-    }
+      0: "0%",
+      1: "0.01em",
+    },
   },
   plugins: [],
-}
+};

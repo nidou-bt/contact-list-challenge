@@ -16,10 +16,8 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const { mutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContactList({id})});
 
-  const handleHover = () => {
-    setTimeout(() => {
-      setIsHover(false)
-    }, 1000);
+  const getPathImg = () => {
+    return  require(`../../assets/uploads/${picture}`)
   }
   return (
     <div
@@ -29,9 +27,9 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
     >
       <div className="flex gap-[16px]">
         <img
-          src={picture ? `../../assets/uploads/${picture}`: profileS}
+          src={picture ?getPathImg(): profileS}
           alt="profile"
-          className="border-[1px] border-[#282828] rounded-full w-[40px]"
+          className="border-[1px] border-[#282828] rounded-full w-[40px] h-[40px] bg-cover bg-no-repeat"
         />
         <div>
           <h3 className="h3 capitalize">{name}</h3>

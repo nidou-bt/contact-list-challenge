@@ -11,14 +11,14 @@ const Navbar = () => {
 
       
     <nav className="font-Glysa text-2xl flex h-[96px] justify-center items-center w-full">
-      <div className="border-x-[1px] border-black-60 md:w-[90vw] p-[26px] w-full flex justify-between items-center">
+      <div className="border-x-[1px] border-black-60 p-[26px] w-full flex justify-between items-center">
         <h1 className="h1 ">Contacts</h1>
         <div className="flex items-center gap-x-[28px]">
-          <Icon src={setting} />
-          <Icon src={icon} />
+          <Icon src={setting} variant="icon" />
+          <Icon src={icon} variant="icon" />
           <button className="flex justify-between items-center gap-x-[15px] rounded-full border px-[8px] py-[16px] max-w-[120px] h-[40px] ">
             <div className="hidden md:block">
-              <Icon src={add} />
+              <Icon src={add}  variant="icon"/>
             </div>
             <p className="body"> Add new</p>
           </button>

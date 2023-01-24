@@ -8,13 +8,7 @@ import lightMode from "./assets/icons/lightMode.png";
 function App() {
   return (
     <div
-      className="bg-black-100 min-h-full"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr min(768px, 85vw) 1fr",
-        gridTemplateRows: "96px 96px 80vh",
-        height: "min(100vh)",
-      }}
+      className="bg-black-100 min-h-[100vh] grid grid-cols-main grid-rows-main"
     >
       <div style={{ border: "1px solid #282828" }}></div>
       <div style={{ border: "1px solid #282828" }}></div>
@@ -27,14 +21,23 @@ function App() {
           borderBottom: "none",
           justifyContent:"flex-end",
           paddingRight:"35px",
-          alignItems:"center"
+          alignItems:"center",
+          
         }}
       >
-        <Icon src={backArrow} />
+        <Icon src={backArrow} variant="icon" />
       </div>
       <Navbar />
-      <div style={{ display: "flex", margin: "auto", marginLeft: "35px" }}>
-        <Icon src={lightMode} />
+      <div style={{
+          display: "flex",
+          border: "1px solid #282828",
+          borderTop: "none",
+          borderBottom: "none",
+          justifyContent:"flex-start",
+          paddingLeft:"35px",
+          alignItems:"center"
+        }}>
+        <Icon src={lightMode} variant="icon" />
       </div>
       <div style={{ border: "1px solid #282828" }}></div>
       <Home />
