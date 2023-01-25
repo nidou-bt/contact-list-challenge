@@ -13,17 +13,17 @@ const checkIfNumber = (event: any) => {
 
 function FormInput({ children, ...props }: Props): JSX.Element {
   return (
-    <div className="m-[16px] gap-y-[4px] ">
+    <div className="m-[24px] ">
       <label
         htmlFor={props.name}
-        className="font-Lexend font-normal not-italic text-[12px] leading-4"
+        className="font-Lexend font-normal not-italic text-[12px] leading-4 text-white/[.56]"
       >
         {children}
       </label>
 
       <input
         {...props}
-        className="block w-full max-w-[390px] h-[40px] gap-[8px] px-[12px] py-[8px] font-Lexend font-normal not-italic text-[12px] leading-[18px] text-white/[0.32] focus:text-white bg-black-60 focus:bg-black rounded-lg"
+        className="block w-full max-w-[390px] h-[40px] px-[12px] py-[11px] font-Lexend font-normal not-italic text-[12px] leading-[18px] text-white focus:text-white focus:bg-black-10 bg-black-60 focus:bg-black rounded-lg "
         onKeyDown={(event) => props.type==="number" ? checkIfNumber(event): event}
       />
     </div>
