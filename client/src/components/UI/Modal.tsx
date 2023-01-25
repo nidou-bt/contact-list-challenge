@@ -42,7 +42,6 @@ export default function Modal({ children, variant, contact }: TProps) {
 
   const handleDone = () => {
     setOpen(false);
-    console.log("contact", newContact);
     mutate({ ...newContact, picture: file });
   };
 

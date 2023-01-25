@@ -4,6 +4,7 @@ import { getContactList } from "../api/contactApi";
 import useFetchQuery from "../hooks/useFetchQuery";
 import ContactCard from "../components/home/ContactCard";
 
+
 const Home = () => {
   const { data, isError, isLoading } = useFetchQuery({
     category: "contact",
@@ -11,7 +12,7 @@ const Home = () => {
   });
 
   return (
-    <div className="home container">
+    <div className="col-start-2 row-start-3 border-[1px] border-black-60">
       <div className="main_list">
         {!isError &&
           !isLoading &&
