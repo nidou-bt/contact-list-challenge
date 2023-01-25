@@ -6,7 +6,7 @@ const contactData: Prisma.ContactCreateInput[] = [
   {
     name: "Alice",
     emailAddress: "alice@prisma.io",
-    phoneNumber: 12345678,
+    phoneNumber: "12345678",
     picture: "",
   },
 ];

@@ -29,7 +29,7 @@ export const updateContactsServ = async ({
   return { contact };
 };
 
-export const deleteContactsServ = async ({ id }: { id: number }) => {
+export const deleteContactsServ = async ({ id }: { id: string }) => {
   const contact = await prisma.contact.delete({
     where: {
       id: Number(id),

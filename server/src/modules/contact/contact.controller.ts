@@ -25,7 +25,7 @@ export const addContact = async (req: Request, res: Response) => {
     if (req.file) {
       body.picture = req.file.filename;
     }
-    body.phoneNumber = Number(body.phoneNumber);
+    body.phoneNumber = body.phoneNumber;
     const { contact } = await createContactsServ(body);
     return res.status(200).json({ data: contact });
   } catch (err) {
@@ -39,7 +39,7 @@ export const addContact = async (req: Request, res: Response) => {
 export const deleteContact = async (req: Request, res: Response) => {
   try {
     const { contactId } = req.params;
-    const id = Number(contactId);
+    const id = contactId;
     const { contact } = await deleteContactsServ({ id });
     return res.status(200).json({ contact });
   } catch (err) {

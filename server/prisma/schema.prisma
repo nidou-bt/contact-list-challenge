@@ -11,6 +11,6 @@ model Contact {
   id    Int     @id @default(autoincrement())
   name  String
   emailAddress String  @unique
-  phoneNumber Int
+  phoneNumber String
   picture String @default("")
 }

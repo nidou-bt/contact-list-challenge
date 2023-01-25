@@ -3,7 +3,7 @@ CREATE TABLE "Contact" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "name" TEXT NOT NULL,
     "emailAddress" TEXT NOT NULL,
-    "phoneNumber" INTEGER NOT NULL,
+    "phoneNumber" TEXT NOT NULL,
     "picture" TEXT NOT NULL DEFAULT ''
 );
 
