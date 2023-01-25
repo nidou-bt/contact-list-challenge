@@ -8,7 +8,7 @@ import Call from "../../assets/icons/call.png";
 import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
 import { deleteContactList } from "../../api/contactApi";
-import Mute from '../../assets/icons/mute.svg'
+import Mute from '../../assets/icons/Mute.png'
 
 interface IProps extends IContact {}
 
@@ -22,8 +22,8 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
   return (
     <div
       className="flex m-[15px] sm:m-[24px] justify-between items-center"
-      onMouseEnter={() => setIsHover(true)}
-      onMouseLeave={() => setIsHover(false)}
+      // onMouseEnter={() => setIsHover(true)}
+      // onMouseLeave={() => setIsHover(false)}
     >
       <div className="flex gap-[16px]">
         <img
@@ -38,7 +38,7 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
       </div>
       <div
         className={
-          isHover
+          true
             ? "flex h-[20px] justify-between gap-[20px] items-center"
             : "hidden"
         }

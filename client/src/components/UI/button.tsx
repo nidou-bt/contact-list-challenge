@@ -21,7 +21,7 @@ function Button({ src, active, variant, ...props }: IButton): JSX.Element {
       {...props}
     >
       <div className="w-[20px] flex items-center justify-center">
-        {src ? <Icon src={src} /> : null}
+        {src ? <Icon src={src} variant="dropdown" /> : null}
       </div>
 
       <p className="body capitalize">{props.children}</p>

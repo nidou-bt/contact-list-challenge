@@ -21,6 +21,9 @@
   .box {
     @apply border-[1px] border-black-60
   }
+  .button {
+    @apply text-[14px] leading-[18px] font-Lexend not-italic font-normal text-white rounded-lg h-[40px] capitalize
+  }
   /* .container {
     @apply max-w-[768px] w-[80vw]
   } */

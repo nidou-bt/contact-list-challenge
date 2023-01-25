@@ -13,7 +13,7 @@ const checkIfNumber = (event: any) => {
 
 function FormInput({ children, ...props }: Props): JSX.Element {
   return (
-    <div className="m-[24px] ">
+    <div className="">
       <label
         htmlFor={props.name}
         className="font-Lexend font-normal not-italic text-[12px] leading-4 text-white/[.56]"
