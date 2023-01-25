@@ -1,6 +1,5 @@
 import {
   MutationFunction,
-  QueryKey,
   useMutation,
   UseMutationResult,
   useQueryClient,
@@ -8,7 +7,7 @@ import {
 import { IContact } from "../types/type";
 
 interface IProps {
-  category: QueryKey;
+  category: string;
   fetchApi: MutationFunction<IContact | undefined, IContact>;
 }
 

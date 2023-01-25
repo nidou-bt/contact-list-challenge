@@ -3,7 +3,7 @@ import Icon from "./Icon";
 
 type IButton = ButtonHTMLAttributes<HTMLButtonElement> & {
   src: string;
-  active: boolean;
+  active?: boolean;
   variant: "icon" | "profil" | "dropdown";
 };
 

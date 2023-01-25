@@ -7,14 +7,14 @@ import More from "../../assets/icons/More.png";
 import Call from "../../assets/icons/call.png";
 import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
-import { deleteContactList } from "../../api/contactApi";
+import { deleteContact } from "../../api/contactApi";
 import Mute from '../../assets/icons/Mute.png'
 
 interface IProps extends IContact {}
 
 const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  const { mutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContactList({id})});
+  const { mutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContact({id: id!})});
 
   const getPathImg = () => {
     return  require(`../../assets/uploads/${picture}`)

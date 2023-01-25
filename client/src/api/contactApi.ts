@@ -14,7 +14,7 @@ export const getContactList = async (): Promise<IContact[] | undefined> => {
   }
 };
 
-export const deleteContactList = async ({id}: {id: number}): Promise<IContact | undefined> => {
+export const deleteContact = async ({id}: {id: number}): Promise<IContact | undefined> => {
   try {
     const { data } = await axiosC.delete(`/api/contact/${id}`);
     return data.data;
@@ -23,7 +23,7 @@ export const deleteContactList = async ({id}: {id: number}): Promise<IContact | 
   }
 };
 
-export const addContactList = async (body: IContact): Promise<IContact | undefined> => {
+export const addContact = async (body: IContact): Promise<IContact | undefined> => {
   try {
     const { data } = await axiosC.post("/api/contact", body);
     return data.data;

@@ -11,7 +11,7 @@ interface IProps {
   page?: number;
   fetchApi:
     | MutationFunction<
-        IContact|undefined,
+        IContact | undefined,
         {
           id: number;
         }
@@ -25,15 +25,16 @@ const useDeleteApi = ({ category, fetchApi }: IProps) => {
     mutate,
     isError,
     isLoading,
-  }: UseMutationResult<IContact|undefined, void, { id: number }> = useMutation({
-    mutationFn: fetchApi,
-    // onError: (error, variables, { id }) => {
-    //   console.log(`rolling back optimistic delete with id ${id}`);
-    // },
-    onSuccess: () => {
-      queryClient.invalidateQueries([category]);
-    },
-  });
+  }: UseMutationResult<IContact | undefined, void, { id: number }> =
+    useMutation({
+      mutationFn: fetchApi,
+      // onError: (error, variables, { id }) => {
+      //   console.log(`rolling back optimistic delete with id ${id}`);
+      // },
+      onSuccess: () => {
+        queryClient.invalidateQueries([category]);
+      },
+    });
   return {
     mutate,
     isError,

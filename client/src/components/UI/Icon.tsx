@@ -3,7 +3,7 @@ import React from "react";
 type TProps = {
   src: string;
   variant?: "icon" | "profil" | "dropdown" | "button";
-};
+}
 
 const Icon = ({ src, variant }: TProps) => {
 
