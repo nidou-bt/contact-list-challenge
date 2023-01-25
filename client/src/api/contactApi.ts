@@ -2,7 +2,6 @@ import { IContact } from "../types/type";
 import axios from "axios";
 import path from "path";
 
-
 const axiosC = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
 });
@@ -37,9 +36,11 @@ export const addContact = async ({
   formData.append("name", body.name);
   formData.append("emailAddress", body.emailAddress);
   formData.append("phoneNumber", body.phoneNumber.toString());
-  formData.append("contactImg", picture ? picture : "");
+  if (!!picture) {
+    formData.append("contactImg", picture);
+  }
   // console.log(Object.fromEntries(formData));
-  
+
   try {
     const { data } = await axiosC.post("/api/contact", formData);
     return data.data;

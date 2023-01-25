@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef } from "react";
+import { Fragment, useState, useRef, useEffect } from "react";
 import { Dialog, DialogBody } from "@material-tailwind/react";
 import FormInput from "./FormInput";
 import profile from "../../assets/icons/profileS.png";
@@ -11,6 +11,7 @@ import { ChangeEvent } from "react";
 import Button from "./Button";
 import useAddApi from "../../hooks/useAddApi";
 import { addContact } from "../../api/contactApi";
+import { getPathImg } from "../../utils/getPath";
 
 type TProps = {
   children: any;
@@ -18,16 +19,22 @@ type TProps = {
   contact?: IContact;
 };
 
-export default function Modal({ children, variant, contact }: TProps) {
+export default function Modal({ children, contact }: TProps) {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
   const [newContact, setNewContact] = useState<IContact>({
     emailAddress: "",
     name: "",
-    phoneNumber: 0,
+    phoneNumber: "",
     picture: "",
   });
+
+  useEffect(() => {
+    return () => {
+      setFile(undefined)
+    };
+  }, []);
 
   const { mutate, isError, isLoading } = useAddApi({
     fetchApi: () => addContact({ ...newContact, picture: file! }),
@@ -37,7 +44,10 @@ export default function Modal({ children, variant, contact }: TProps) {
   const handleOpen = () => setOpen(!open);
 
   const handelChange = (e: any) => {
-    setNewContact({ ...newContact, [e.target.name]: e.target.value });
+    setNewContact({
+      ...newContact,
+      [e.target.name]: e.target.value.toString(),
+    });
   };
 
   const handleDone = () => {
@@ -59,7 +69,15 @@ export default function Modal({ children, variant, contact }: TProps) {
         >
           <h2 className="h2">Add contact</h2>
           <div className="flex justify-start gap-[16px] items-center">
-            <img src={profile} className="w-[88px]" alt="profile" />
+            <img
+              src={
+                contact?.picture
+                  ? getPathImg(contact.picture as string)
+                  : profile
+              }
+              className="w-[88px]"
+              alt="profile"
+            />
             <div>
               {true ? (
                 <Button

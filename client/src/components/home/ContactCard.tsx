@@ -8,6 +8,7 @@ import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
 import { deleteContact } from "../../api/contactApi";
 import Mute from '../../assets/icons/Mute.png'
+import { getPathImg } from "../../utils/getPath";
 
 interface IProps extends IContact {}
 
@@ -15,9 +16,6 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const { mutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContact({id: id!})});
 
-  const getPathImg = () => {
-    return  require(`../../assets/uploads/${picture}`)
-  }
   return (
     <div
       className="flex m-[15px] sm:m-[24px] justify-between items-center"
@@ -26,7 +24,7 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
     >
       <div className="flex gap-[16px]">
         <img
-          src={picture ?getPathImg(): profileS}
+          src={picture ?getPathImg(picture as string): profileS}
           alt="profile"
           className="border-[1px] border-[#282828] rounded-full w-[40px] h-[40px] bg-cover bg-no-repeat"
         />
