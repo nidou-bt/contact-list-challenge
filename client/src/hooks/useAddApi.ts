@@ -25,15 +25,19 @@ const useAddApi = ({ category, fetchApi }: IProps) => {
     mutationKey: [category],
     onSettled: (data, variables, context) => {
       console.log("dataa", data);
-      if (data) {
-        queryClient.setQueryData<IContact[]>(["contact"], (oldQueryData) => {
-          if (oldQueryData) {
-            return [...oldQueryData, data];
-          } else {
-            return [data];
-          }
-        });
-      }
+      console.log("context", context);
+      setTimeout(() => {
+        if (data) {
+          queryClient.setQueryData<IContact[]>(["contact"], (oldQueryData) => {
+            if (oldQueryData) {
+              return [...oldQueryData, data];
+            } else {
+              return [data];
+            }
+          });
+        }
+      }, 1000);
+      
     },
   });
   return {

@@ -41,7 +41,7 @@ export const addContact = async ({
   console.log(Object.fromEntries(formData));
   
   try {
-    const { data } = await axiosC.post("/api/contact", body);
+    const { data } = await axiosC.post("/api/contact", formData);
     return data.data;
   } catch (err) {
     console.log(err);

@@ -93,7 +93,7 @@ export default function Modal({ children, variant, contact }: TProps) {
             id="name"
             name="name"
             type="text"
-            placeholder="name"
+            placeholder={contact?.name ?? "Jamie Wright"}
             onChange={handelChange}
           >
             Name
@@ -102,7 +102,7 @@ export default function Modal({ children, variant, contact }: TProps) {
             id="phoneNumber"
             name="phoneNumber"
             type="number"
-            placeholder="phone number"
+            placeholder={contact?.phoneNumber?.toString() ?? "+01 234 5678"}
             onChange={handelChange}
           >
             Phone Number
@@ -111,7 +111,7 @@ export default function Modal({ children, variant, contact }: TProps) {
             id="emailAddress"
             name="emailAddress"
             type="text"
-            placeholder=" emailk"
+            placeholder={contact?.emailAddress ?? "jamie.wright@mail.com"}
             onChange={handelChange}
           >
             Email Adress
