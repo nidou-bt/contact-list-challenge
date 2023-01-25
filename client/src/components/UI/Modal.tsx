@@ -12,14 +12,23 @@ import Button from "./Button";
 import useAddApi from "../../hooks/useAddApi";
 import { addContact } from "../../api/contactApi";
 import { getPathImg } from "../../utils/getPath";
+import { UseMutateFunction } from "@tanstack/react-query";
 
 type TProps = {
   children: any;
   variant?: "add" | "edit";
   contact?: IContact;
+  mutate: UseMutateFunction<
+    IContact | undefined,
+    void,
+    IContact & {
+      picture: File;
+    },
+    unknown
+  >;
 };
 
-export default function Modal({ children, contact }: TProps) {
+export default function Modal({ children, contact, mutate }: TProps) {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
@@ -32,14 +41,9 @@ export default function Modal({ children, contact }: TProps) {
 
   useEffect(() => {
     return () => {
-      setFile(undefined)
+      setFile(undefined);
     };
   }, []);
-
-  const { mutate, isError, isLoading } = useAddApi({
-    fetchApi: () => addContact({ ...newContact, picture: file! }),
-    category: "contact",
-  });
 
   const handleOpen = () => setOpen(!open);
 
@@ -52,7 +56,7 @@ export default function Modal({ children, contact }: TProps) {
 
   const handleDone = () => {
     setOpen(false);
-    mutate({ ...newContact, picture: file });
+    mutate({ ...newContact, picture: file! });
   };
 
   return (
