@@ -3,7 +3,7 @@ import { Menu, Transition } from "@headlessui/react";
 import setting from "../../assets/icons/settings.png";
 import favourite from "../../assets/icons/favourite.png";
 import Delete from "../../assets/icons/delete.png";
-import Button from "../UI/button";
+import Button from "../UI/Button";
 
 function DropDown({ children, mutate }: any) {
   return (

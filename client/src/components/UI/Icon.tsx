@@ -17,7 +17,7 @@ const Icon = ({ src, variant }: TProps) => {
           : variant === "profil"
           ? "h-[40px] hover:cursor-pointer max-w-none"
           : variant === "dropdown"
-          ? "h-[20px] hover:cursor-pointer max-w-none"
+          ? "h-[20px] hover:cursor-pointer max-w-none opacity-50"
           : variant === "button"
           ? "h-[13.5px] hover:cursor-pointer max-w-none"
           : "h-[16px] hover:cursor-pointer max-w-none"
