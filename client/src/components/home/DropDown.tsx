@@ -27,7 +27,7 @@ function DropDown({ children, mutate }: any) {
           >
             <Menu.Items
               className="absolute right-0 lg:left-0 top-[40px]  z-10 w-[90vw] max-w-[219px] origin-top-right rounded-lg bg-black-80 shadow-lg ring-black ring-opacity-5  focus:outline-none active:ring-offset-current"
-              onMouseLeave={close}
+              // onMouseLeave={close}
             >
               <div className="">
                 <Menu.Item>

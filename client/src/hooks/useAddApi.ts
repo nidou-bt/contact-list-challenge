@@ -22,11 +22,15 @@ const useAddApi = ({ category, fetchApi }: IProps) => {
     // onError: (error, variables, { id }) => {
     //   console.log(`rolling back optimistic delete with id ${id}`);
     // },
-    onSuccess: (data, variables, context) => {
+    mutationKey: [category],
+    onSettled: (data, variables, context) => {
+      console.log("dataa", data);
       if (data) {
-        queryClient.setQueryData<IContact[]>([category], (oldQueryData) => {
+        queryClient.setQueryData<IContact[]>(["contact"], (oldQueryData) => {
           if (oldQueryData) {
             return [...oldQueryData, data];
+          } else {
+            return [data];
           }
         });
       }

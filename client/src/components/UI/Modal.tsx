@@ -20,7 +20,7 @@ type TProps = {
 
 export default function Modal({ children, variant, contact }: TProps) {
   const [open, setOpen] = useState(false);
-  const hiddenInput = useRef(null);
+  const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
   const [newContact, setNewContact] = useState<IContact>({
     emailAddress: "",
@@ -30,7 +30,7 @@ export default function Modal({ children, variant, contact }: TProps) {
   });
 
   const { mutate, isError, isLoading } = useAddApi({
-    fetchApi: () => addContact({ ...newContact, picture: file }),
+    fetchApi: () => addContact({ ...newContact, picture: file! }),
     category: "contact",
   });
 
@@ -43,7 +43,7 @@ export default function Modal({ children, variant, contact }: TProps) {
   const handleDone = () => {
     setOpen(false);
     console.log("contact", newContact);
-    // mutate():
+    mutate({ ...newContact, picture: file });
   };
 
   return (
@@ -62,11 +62,14 @@ export default function Modal({ children, variant, contact }: TProps) {
           <div className="flex justify-start gap-[16px] items-center">
             <img src={profile} className="w-[88px]" alt="profile" />
             <div>
-              {false ? (
+              {true ? (
                 <Button
                   className="bg-black-50 button flex items-center gap-[12px] px-[16px] py-[8px] max-w-[164px] justify-between"
                   src={add}
                   variant="icon"
+                  onClick={() => {
+                    hiddenInput.current!.click();
+                  }}
                 >
                   Add picture
                 </Button>
@@ -82,16 +85,6 @@ export default function Modal({ children, variant, contact }: TProps) {
                   <button className="bg-black-50 button w-[40px] flex items-center justify-center">
                     <Icon src={Delete} />
                     {/* <img src={Delete} alt="delete" className="" /> */}
-                    <input
-                      ref={hiddenInput}
-                      style={{ display: "none" }}
-                      type="file"
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                        if (!!e.target.files) {
-                          return setFile(e.target.files[0]);
-                        }
-                      }}
-                    />
                   </button>
                 </div>
               )}
@@ -124,6 +117,16 @@ export default function Modal({ children, variant, contact }: TProps) {
           >
             Email Adress
           </FormInput>
+          <input
+            ref={hiddenInput}
+            style={{ display: "none" }}
+            type="file"
+            onChange={(e: ChangeEvent<HTMLInputElement>) => {
+              if (!!e.target.files) {
+                return setFile(e.target.files[0]);
+              }
+            }}
+          />
           <div className="flex justify-end gap-[24px] absolute m-[24px] right-[0px] bottom-[0px] items-center  ">
             <button className="capitalize button" onClick={handleOpen}>
               Cancel

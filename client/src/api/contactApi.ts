@@ -23,9 +23,16 @@ export const deleteContact = async ({id}: {id: number}): Promise<IContact | unde
   }
 };
 
-export const addContact = async (body: IContact): Promise<IContact | undefined> => {
+export const addContact = async ({picture, ...body}: IContact & {picture:any}): Promise<IContact | undefined> => {
+  let formData = new FormData();
+  formData.append("name",body.name);
+  formData.append("emailAddress", body.emailAddress);
+  formData.append("phoneNumber", body.phoneNumber.toString());
+  formData.append("contactImg", picture);
+
   try {
     const { data } = await axiosC.post("/api/contact", body);
+    console.log('res', data)
     return data.data;
   } catch (err) {
     console.log(err);
