@@ -55,13 +55,6 @@ const Modal = ({ children, contact, mutate }: TProps) => {
     });
   };
 
-  useEffect(() => {
-    if (!!file) {
-      console.log("file", URL.createObjectURL(file));
-    }
-    // console.log('object', URL.createObjectURL(file!))
-  }, [file]);
-
   const handleOpen = () => setOpen(!open);
   const handleClick = () => {
     hiddenInput.current!.click();
@@ -81,7 +74,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
 
   const handleDelete = () => {
     setNewContact({ ...newContact, picture: "" });
-    setFile(undefined)
+    setFile(undefined);
   };
 
   return (
@@ -110,7 +103,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
               alt="profile"
             />
             <div>
-              {!file ? (
+              {!file && (!contact?.picture || true) ? (
                 <Button
                   className="bg-black-50 button flex items-center gap-[12px] px-[16px] py-[8px] max-w-[164px] justify-between"
                   src={add}
