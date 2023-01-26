@@ -1,15 +1,6 @@
-challenge for contact list
-script
-for generate prisma client schema
-npx prisma generate
-
-for add connection between server and SQLite
-npx prisma migrate dev --name init
-
 # Contact List Chanllenge
 
-This example shows continet 
-how to implement a **REST API with TypeScript** using [Express](https://expressjs.com/) and [Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client). The example uses an SQLite database file with some initial dummy data which you can find at [`./prisma/dev.db`](./prisma/dev.db).
+This example shows how to implement a **REST API with TypeScript** using [Express](https://expressjs.com/) and [Prisma Client](https://www.prisma.io/docs/concepts/components/prisma-client). The example uses an SQLite database file with some initial dummy data which you can find at [`./prisma/dev.db`](./prisma/dev.db).
 
 ## Getting started
 
