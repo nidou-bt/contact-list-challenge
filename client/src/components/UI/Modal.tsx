@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef, ChangeEvent, useEffect, Dispatch } from "react";
+import { Fragment, useState, useRef, ChangeEvent, useEffect, Dispatch, forwardRef } from "react";
 import { UseMutateFunction } from "@tanstack/react-query";
 import { Dialog, DialogBody } from "@material-tailwind/react";
 import FormInput from "./FormInput";
@@ -23,7 +23,7 @@ type TProps = {
 
 };
 
-const Modal = ({ children, contact, mutate }: TProps) => {
+const Modal = forwardRef<HTMLInputElement, TProps>(({ children, contact, mutate }, ref) => {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
@@ -120,6 +120,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
             placeholder={contact?.name ?? "Jamie Wright"}
             onChange={handelChange}
             value={newContact.name}
+            ref={ref}
           >
             Name
           </FormInput>
@@ -168,6 +169,6 @@ const Modal = ({ children, contact, mutate }: TProps) => {
       </Dialog>
     </Fragment>
   );
-};
+});
 
 export default Modal;

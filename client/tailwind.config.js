@@ -9,6 +9,9 @@ module.exports = {
       gridTemplateRows: {
         main: "96px 96px 80vh ",
       },
+      bgGradientDeg: {
+        180: '180deg',
+      }
     },
     colors: {
       black: {

@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, forwardRef } from "react";
 
 type Props = {
   children: string;
@@ -11,7 +11,7 @@ const checkIfNumber = (event: React.KeyboardEvent<HTMLInputElement>) => {
   return !event.key.match(regex) && event.preventDefault();
 }
 
-function FormInput({ children, ...props }: Props): JSX.Element {
+const FormInput = forwardRef<HTMLInputElement, Props>(({ children, ...props },ref): JSX.Element => {
 
   return (
     <div className="">
@@ -29,6 +29,6 @@ function FormInput({ children, ...props }: Props): JSX.Element {
       />
     </div>
   );
-}
+})
 
 export default FormInput;

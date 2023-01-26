@@ -19,7 +19,9 @@ const Navbar = () => {
           <Icon src={icons.settings} variant="icon" />
           <Icon src={icons.icon} variant="icon" />
           <Modal mutate={mutate}>
-            <button className="flex justify-between items-center gap-x-[13px] bg-black-60 rounded-lg sm:rounded-full px-[12px] py-[16px] max-w-[120px] h-[40px] border-[1px] border-black-20 hover:bg-black-50 active:bg-black-40">
+            <button className="flex justify-between items-center gap-x-[13px] bg-black-60 rounded-lg sm:rounded-full px-[12px] py-[16px] max-w-[120px] h-[40px] border-[1px] border-black-20 hover:bg-black-50 active:bg-black-40
+            ">
+              {/* //  bg-gradient-to-t from-black-10 to-black-60/70 bg-gradient-180 */}
               <div className="block sm:hidden md:block">
                 <Icon src={icons.add} variant="button" />
               </div>
