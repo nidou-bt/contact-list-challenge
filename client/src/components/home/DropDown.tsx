@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import setting from "../../assets/icons/settings.png";
 import favourite from "../../assets/icons/favourite.png";

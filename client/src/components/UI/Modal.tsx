@@ -30,29 +30,14 @@ const Modal = ({ children, contact, mutate }: TProps) => {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [newContact, setNewContact] = useState<IContact>({
-    emailAddress: "",
-    name: "",
-    phoneNumber: "",
-    picture: "",
-  });
-
-  useEffect(() => {
-    if (!open) {
-      cleanModal();
-    }
-  }, [open]);
-
-  const cleanModal = () => {
-    setFile(undefined);
-    setNewContact({
-      id:16,
+  const [newContact, setNewContact] = useState<IContact>(
+    contact || {
       emailAddress: "",
       name: "",
       phoneNumber: "",
       picture: "",
-    });
-  };
+    }
+  );
 
   const handleOpen = () => setOpen(!open);
   const handleClick = () => {
@@ -68,7 +53,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
 
   const handleDone = () => {
     setOpen(false);
-    mutate!({ ...newContact, picture: file!, id:contact?.id });
+    mutate!({ ...newContact, picture: file!, id: contact?.id });
   };
 
   const handleDelete = () => {
@@ -92,8 +77,8 @@ const Modal = ({ children, contact, mutate }: TProps) => {
           <div className="flex justify-start gap-[16px] items-center">
             <img
               src={
-                newContact?.picture
-                  ? getPathImg(newContact.picture as string)
+                contact?.picture
+                  ? getPathImg(contact.picture as string)
                   : !!file
                   ? URL.createObjectURL(file)
                   : profile
@@ -145,9 +130,9 @@ const Modal = ({ children, contact, mutate }: TProps) => {
             id="phoneNumber"
             name="phoneNumber"
             type="number"
-            placeholder={newContact.phoneNumber.toString() ?? "+01 234 5678"}
+            placeholder={contact?.phoneNumber.toString() ?? "+01 234 5678"}
             onChange={handelChange}
-
+            value={newContact.phoneNumber}
           >
             Phone Number
           </FormInput>
@@ -155,8 +140,9 @@ const Modal = ({ children, contact, mutate }: TProps) => {
             id="emailAddress"
             name="emailAddress"
             type="text"
-            placeholder={newContact.emailAddress ?? "jamie.wright@mail.com"}
+            placeholder={contact?.emailAddress ?? "jamie.wright@mail.com"}
             onChange={handelChange}
+            value={newContact.emailAddress}
           >
             Email Adress
           </FormInput>
