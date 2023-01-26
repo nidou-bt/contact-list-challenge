@@ -1,5 +1,4 @@
 import Home from "./pages/Home";
-import "./App.css";
 import Navbar from "./shared/Navbar";
 import Icon from "./components/UI/Icon";
 import { icons } from "./utils/icons";

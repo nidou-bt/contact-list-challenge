@@ -58,8 +58,10 @@ export const updateContact = async ({
   formData.append("phoneNumber", body.phoneNumber.toString());
   if (!!picture) {
     formData.append("contactImg", picture);
+  } else {
+    formData.append("picture", "")
   }
-
+  console.log(Object.fromEntries(formData));
   try {
     const { data } = await axiosC.put(`/api/contact/${body.id}`, formData);
     return data.data;
