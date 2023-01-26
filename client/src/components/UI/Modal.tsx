@@ -9,8 +9,6 @@ import { IContact } from "../../types/type";
 import Icon from "./Icon";
 import { ChangeEvent } from "react";
 import Button from "./Button";
-import useAddApi from "../../hooks/useAddApi";
-import { addContact } from "../../api/contactApi";
 import { getPathImg } from "../../utils/getPath";
 import { UseMutateFunction } from "@tanstack/react-query";
 
@@ -18,7 +16,7 @@ type TProps = {
   children: any;
   variant?: "add" | "edit";
   contact?: IContact;
-  mutate: UseMutateFunction<
+  mutate?: UseMutateFunction<
     IContact | undefined,
     void,
     IContact & {
@@ -28,24 +26,46 @@ type TProps = {
   >;
 };
 
-export default function Modal({ children, contact, mutate }: TProps) {
+const Modal = ({ children, contact, mutate }: TProps) => {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [newContact, setNewContact] = useState<IContact>({
-    emailAddress: "",
-    name: "",
-    phoneNumber: "",
-    picture: "",
-  });
+  const [newContact, setNewContact] = useState<IContact>(
+    contact || {
+      emailAddress: "",
+      name: "",
+      phoneNumber: "",
+      picture: "",
+    }
+  );
 
   useEffect(() => {
-    return () => {
-      setFile(undefined);
-    };
-  }, []);
+    if (!open) {
+      cleanModal();
+    }
+  }, [open]);
+
+  const cleanModal = () => {
+    setFile(undefined);
+    setNewContact({
+      emailAddress: "",
+      name: "",
+      phoneNumber: "",
+      picture: "",
+    });
+  };
+
+  useEffect(() => {
+    if (!!file) {
+      console.log("file", URL.createObjectURL(file));
+    }
+    // console.log('object', URL.createObjectURL(file!))
+  }, [file]);
 
   const handleOpen = () => setOpen(!open);
+  const handleClick = () => {
+    hiddenInput.current!.click();
+  };
 
   const handelChange = (e: any) => {
     setNewContact({
@@ -56,7 +76,12 @@ export default function Modal({ children, contact, mutate }: TProps) {
 
   const handleDone = () => {
     setOpen(false);
-    mutate({ ...newContact, picture: file! });
+    mutate!({ ...newContact, picture: file! });
+  };
+
+  const handleDelete = () => {
+    setNewContact({ ...newContact, picture: "" });
+    setFile(undefined)
   };
 
   return (
@@ -71,26 +96,26 @@ export default function Modal({ children, contact, mutate }: TProps) {
           divider
           className=" flex flex-col gap-[24px] bg-black-100 w-[85vw] max-w-[364px] min-h-[540px] rounded-lg m-auto relative p-[24px]"
         >
-          <h2 className="h2">Add contact</h2>
+          <h2 className="h2">{!contact ? "Add contact" : "Edit contact"}</h2>
           <div className="flex justify-start gap-[16px] items-center">
             <img
               src={
-                contact?.picture
-                  ? getPathImg(contact.picture as string)
+                newContact?.picture
+                  ? getPathImg(newContact.picture as string)
+                  : !!file
+                  ? URL.createObjectURL(file)
                   : profile
               }
-              className="w-[88px]"
+              className="w-[88px] h-[88px] rounded-full"
               alt="profile"
             />
             <div>
-              {true ? (
+              {!file ? (
                 <Button
                   className="bg-black-50 button flex items-center gap-[12px] px-[16px] py-[8px] max-w-[164px] justify-between"
                   src={add}
                   variant="icon"
-                  onClick={() => {
-                    hiddenInput.current!.click();
-                  }}
+                  onClick={handleClick}
                 >
                   Add picture
                 </Button>
@@ -100,12 +125,15 @@ export default function Modal({ children, contact, mutate }: TProps) {
                     className="bg-black-50 button flex items-center gap-[12px] px-[12px] py-[8px] max-w-[164px] justify-between"
                     src={change}
                     variant="icon"
+                    onClick={handleClick}
                   >
                     change picture
                   </Button>
-                  <button className="bg-black-50 button w-[40px] flex items-center justify-center">
+                  <button
+                    className="bg-black-50 button w-[40px] flex items-center justify-center"
+                    onClick={handleDelete}
+                  >
                     <Icon src={Delete} />
-                    {/* <img src={Delete} alt="delete" className="" /> */}
                   </button>
                 </div>
               )}
@@ -163,4 +191,6 @@ export default function Modal({ children, contact, mutate }: TProps) {
       </Dialog>
     </Fragment>
   );
-}
+};
+
+export default Modal;

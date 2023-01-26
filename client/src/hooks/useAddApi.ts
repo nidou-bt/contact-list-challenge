@@ -23,7 +23,7 @@ const useAddApi = ({ category, fetchApi }: IProps) => {
     //   console.log(`rolling back optimistic delete with id ${id}`);
     // },
     mutationKey: [category],
-    onSettled: (data, variables, context) => {
+    onSuccess: (data, variables, context) => {
       setTimeout(() => {
         if (data) {
           queryClient.setQueryData<IContact[]>(["contact"], (oldQueryData) => {

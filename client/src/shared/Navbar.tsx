@@ -1,23 +1,15 @@
-import React, { useState, ChangeEvent } from "react";
+import React from "react";
 import Icon from "../components/UI/Icon";
 import setting from "../assets/icons/settings.png";
 import icon from "../assets/icons/icon.png";
 import add from "../assets/icons/add.png";
 import Modal from "../components/UI/Modal";
-import { IContact } from "../types/type";
 import useAddApi from "../hooks/useAddApi";
 import { addContact } from "../api/contactApi";
 
 const Navbar = () => {
-  const [file, setFile] = useState<File>();
-  const [newContact, setNewContact] = useState<IContact>({
-    emailAddress: "",
-    name: "",
-    phoneNumber: "",
-    picture: "",
-  });
   const { mutate, isError, isLoading } = useAddApi({
-    fetchApi:addContact,
+    fetchApi: addContact,
     category: "contact",
   });
 

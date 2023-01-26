@@ -6,15 +6,17 @@ import More from "../../assets/icons/More.png";
 import Call from "../../assets/icons/call.png";
 import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
-import { deleteContact } from "../../api/contactApi";
+import { deleteContact, updateContact } from "../../api/contactApi";
 import Mute from '../../assets/icons/Mute.png'
 import { getPathImg } from "../../utils/getPath";
+import useUpdateApi from "../../hooks/useUpdateApi";
 
 interface IProps extends IContact {}
 
-const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
+const ContactCard = (contact: IProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  const { mutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContact({id: id!})});
+  const { mutate: deleteMutate, isError, isLoading} = useDeleteApi({ category:"contact", fetchApi:()=>deleteContact({id: contact.id!})});
+  const { mutate: updateMutate} = useUpdateApi({category: 'contact', fetchApi: updateContact})
 
   return (
     <div
@@ -24,13 +26,13 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
     >
       <div className="flex gap-[16px]">
         <img
-          src={picture ?getPathImg(picture as string): profileS}
+          src={contact.picture ?getPathImg(contact.picture as string): profileS}
           alt="profile"
           className="border-[1px] border-[#282828] rounded-full w-[40px] h-[40px] bg-cover bg-no-repeat"
         />
         <div>
-          <h3 className="h3 capitalize">{name}</h3>
-          <p className="message">+36 {phoneNumber}</p>
+          <h3 className="h3 capitalize">{contact.name}</h3>
+          <p className="message">+36 {contact.phoneNumber}</p>
         </div>
       </div>
       <div
@@ -42,7 +44,7 @@ const ContactCard = ({ name, picture, phoneNumber, id }: IProps) => {
       >
         <Icon src={Mute} variant="icon" />
         <Icon src={Call} variant="icon" />
-        <DropDown mutate={mutate}>
+        <DropDown deleteMutate={deleteMutate} updateMutate={updateMutate} contact={contact} >
           <Icon src={More} variant="icon" />
         </DropDown>
       </div>
