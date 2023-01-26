@@ -24,6 +24,10 @@ const ContactCard = (contact: IContact) => {
     fetchApi: updateContact,
   });
 
+  const updateHover = () => {
+    setIsHover(false);
+  }
+
   return (
     <div
       className="flex m-[15px] sm:m-[24px] justify-between items-center"

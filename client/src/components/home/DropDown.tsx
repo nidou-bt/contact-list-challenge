@@ -1,12 +1,10 @@
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import setting from "../../assets/icons/settings.png";
-import favourite from "../../assets/icons/favourite.png";
-import Delete from "../../assets/icons/delete.png";
+import { UseMutateFunction } from "@tanstack/react-query";
 import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 import { IContact } from "../../types/type";
-import { UseMutateFunction } from "@tanstack/react-query";
+import { icons } from "../../utils/icons";
 
 type TProps = {
   children: React.ReactNode;
@@ -39,7 +37,6 @@ function DropDown({ children, deleteMutate, updateMutate, contact }: TProps) {
               {children}
             </Menu.Button>
           </div>
-
           <Transition
             as={Fragment}
             enter="transition ease-out duration-100"
@@ -54,7 +51,7 @@ function DropDown({ children, deleteMutate, updateMutate, contact }: TProps) {
                 <Menu.Item>
                   <Modal contact={contact} mutate={updateMutate}>
                     <Button
-                      src={setting}
+                      src={icons.settings}
                       active={false}
                       children="edit"
                       variant="dropdown"
@@ -63,14 +60,14 @@ function DropDown({ children, deleteMutate, updateMutate, contact }: TProps) {
                 </Menu.Item>
                 <Menu.Item>
                   <Button
-                    src={favourite}
+                    src={icons.favourite}
                     children="favorite"
                     variant="dropdown"
                   />
                 </Menu.Item>
                 <Menu.Item>
                   <Button
-                    src={Delete}
+                    src={icons.Delete}
                     children="delete"
                     variant="dropdown"
                     onClick={()=>deleteMutate({id: contact.id!})}

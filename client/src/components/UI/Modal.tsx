@@ -1,6 +1,6 @@
-import { Fragment, useState, useRef, ChangeEvent } from "react";
-import { Dialog, DialogBody } from "@material-tailwind/react";
+import { Fragment, useState, useRef, ChangeEvent, useEffect, Dispatch } from "react";
 import { UseMutateFunction } from "@tanstack/react-query";
+import { Dialog, DialogBody } from "@material-tailwind/react";
 import FormInput from "./FormInput";
 import { IContact } from "../../types/type";
 import Icon from "./Icon";
@@ -20,6 +20,7 @@ type TProps = {
     },
     unknown
   >;
+
 };
 
 const Modal = ({ children, contact, mutate }: TProps) => {

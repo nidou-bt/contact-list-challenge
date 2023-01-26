@@ -4,7 +4,7 @@ type Props = {
   children: string;
 } & InputHTMLAttributes<HTMLInputElement>;
 
-const checkIfNumber = (event: any) => {
+const checkIfNumber = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
   const regex = new RegExp(/(^\d*$)|(Backspace|Tab|Delete|ArrowLeft|ArrowRight)/);
        
