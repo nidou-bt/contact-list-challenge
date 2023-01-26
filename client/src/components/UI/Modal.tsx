@@ -1,16 +1,12 @@
-import { Fragment, useState, useRef, useEffect } from "react";
+import { Fragment, useState, useRef, ChangeEvent } from "react";
 import { Dialog, DialogBody } from "@material-tailwind/react";
+import { UseMutateFunction } from "@tanstack/react-query";
 import FormInput from "./FormInput";
-import profile from "../../assets/icons/profileS.png";
-import Delete from "../../assets/icons/delete.png";
-import change from "../../assets/icons/change.png";
-import add from "../../assets/icons/add.png";
 import { IContact } from "../../types/type";
 import Icon from "./Icon";
-import { ChangeEvent } from "react";
 import Button from "./Button";
 import { getPathImg } from "../../utils/getPath";
-import { UseMutateFunction } from "@tanstack/react-query";
+import { icons } from "../../utils/icons";
 
 type TProps = {
   children: any;
@@ -77,20 +73,20 @@ const Modal = ({ children, contact, mutate }: TProps) => {
           <div className="flex justify-start gap-[16px] items-center">
             <img
               src={
-                contact?.picture
-                  ? getPathImg(contact.picture as string)
-                  : !!file
+                !!file
                   ? URL.createObjectURL(file)
-                  : profile
+                  : newContact?.picture
+                  ? getPathImg(newContact.picture as string)
+                  : icons.profile
               }
               className="w-[88px] h-[88px] rounded-full"
               alt="profile"
             />
             <div>
-              {!file && !contact?.picture ? (
+              {!file && !newContact?.picture ? (
                 <Button
                   className="bg-black-50 button flex items-center gap-[12px] px-[16px] py-[8px] max-w-[164px] justify-between"
-                  src={add}
+                  src={icons.add}
                   variant="icon"
                   onClick={handleClick}
                 >
@@ -100,7 +96,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
                 <div className="flex gap-[8px]">
                   <Button
                     className="bg-black-50 button flex items-center gap-[12px] px-[12px] py-[8px] max-w-[164px] justify-between"
-                    src={change}
+                    src={icons.change}
                     variant="icon"
                     onClick={handleClick}
                   >
@@ -110,7 +106,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
                     className="bg-black-50 button w-[40px] flex items-center justify-center"
                     onClick={handleDelete}
                   >
-                    <Icon src={Delete} />
+                    <Icon src={icons.Delete} />
                   </button>
                 </div>
               )}

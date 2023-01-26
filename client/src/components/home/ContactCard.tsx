@@ -1,17 +1,13 @@
 import React, { useState, memo } from "react";
 import { IContact } from "../../types/type";
 import Icon from "../../components/UI/Icon";
-import profileS from "../../assets/icons/profileS.png";
-import More from "../../assets/icons/More.png";
-import Call from "../../assets/icons/call.png";
 import DropDown from "./DropDown";
 import useDeleteApi from "../../hooks/useDeleteApi";
 import { deleteContact, updateContact } from "../../api/contactApi";
-import Mute from "../../assets/icons/Mute.png";
 import { getPathImg } from "../../utils/getPath";
 import useUpdateApi from "../../hooks/useUpdateApi";
 import Modal from "../UI/Modal";
-
+import { icons } from "../../utils/icons";
 
 const ContactCard = (contact: IContact) => {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -37,7 +33,9 @@ const ContactCard = (contact: IContact) => {
       <div className="flex gap-[16px]">
         <img
           src={
-            contact.picture ? getPathImg(contact.picture as string) : profileS
+            contact.picture
+              ? getPathImg(contact.picture as string)
+              : icons.profile
           }
           alt="profile"
           className="border-[1px] border-[#282828] rounded-full w-[40px] h-[40px] bg-cover bg-no-repeat"
@@ -55,15 +53,15 @@ const ContactCard = (contact: IContact) => {
         }
       >
         <Modal contact={contact} mutate={updateMutate}>
-          <Icon src={Mute} variant="icon" />
+          <Icon src={icons.mute} variant="icon" />
         </Modal>
-        <Icon src={Call} variant="icon" />
+        <Icon src={icons.call} variant="icon" />
         <DropDown
           deleteMutate={deleteMutate}
           updateMutate={updateMutate}
           contact={contact}
         >
-          <Icon src={More} variant="icon" />
+          <Icon src={icons.more} variant="icon" />
         </DropDown>
       </div>
     </div>
