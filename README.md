@@ -58,4 +58,6 @@ Now, You can access the REST API of the server using the endpoint: localhost:300
 To Start the react client you need to follow this steps:
 First add .env file with "REACT_APP_BASE_URL"="3001". You can find an example of the file with name .env.example.
 After that you can run the following script
-### `npm start`
+```
+npm start
+```
