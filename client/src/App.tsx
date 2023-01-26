@@ -3,7 +3,7 @@ import Navbar from "shared/Navbar";
 import Icon from "components/UI/Icon";
 import { icons } from "utils/icons";
 
-const className = "box flex  items-center border-r-[1px] border-t-0 border-b-0"
+const className = "box flex items-center border-r-[1px] border-t-0 border-b-0"
 
 function App() {
   return (

@@ -2,11 +2,11 @@ import { Fragment, useState, useRef, ChangeEvent, forwardRef } from "react";
 import { UseMutateFunction } from "@tanstack/react-query";
 import { Dialog, DialogBody } from "@material-tailwind/react";
 import FormInput from "./FormInput";
-import { IContact } from "../../types/type";
+import { IContact } from "types/type";
 import Icon from "./Icon";
 import Button from "./Button";
-import { getPathImg } from "../../utils/getPath";
-import { icons } from "../../utils/icons";
+import { getPathImg } from "utils/getPath";
+import { icons } from "utils/icons";
 
 type TProps = {
   children: any;
@@ -40,7 +40,7 @@ const Modal = forwardRef<HTMLInputElement, TProps>(
     const handleOpen = () => {
       setTimeout(() => {
         setOpen(!open);
-      }, 500);
+      }, 200);
     };
     const handleClick = () => {
       hiddenInput.current!.click();
@@ -69,6 +69,9 @@ const Modal = forwardRef<HTMLInputElement, TProps>(
 
     const handleClose = () => {
       handleOpen();
+      if (!!contact) {
+        setNewContact(contact);
+      }
     };
 
     return (

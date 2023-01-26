@@ -64,8 +64,10 @@ export const updateContact = async ({
   }
   if (!!picture) {
     formData.append("contactImg", picture);
-  } 
-  console.log(Object.fromEntries(formData));
+  } else {
+    formData.append("picture", "");
+  }
+  // console.log(Object.fromEntries(formData));
   try {
     const { data } = await axiosC.put(`/api/contact/${body.id}`, formData);
     return data.data;
