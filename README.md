@@ -28,8 +28,9 @@ npm install
 ### 2. Generate Prisma Client
 Run the following command to create your Prisma Client in server folder.
 
+```
 npx prisma generate
-
+```
 ### 3. Create and seed the database
 
 Run the following command to create your SQLite database file. This also creates the `Contact`  table that are defined in [`prisma/schema.prisma`](./prisma/schema.prisma):
