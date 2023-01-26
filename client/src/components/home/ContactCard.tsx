@@ -12,8 +12,6 @@ const ContactCard = (contact: IContact) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const {
     mutate: deleteMutate,
-    isError,
-    isLoading,
   } = useDeleteApi({
     category: "contact",
     fetchApi: () => deleteContact({ id: contact.id! }),
@@ -22,10 +20,6 @@ const ContactCard = (contact: IContact) => {
     category: "contact",
     fetchApi: updateContact,
   });
-
-  const updateHover = () => {
-    setIsHover(false);
-  };
 
   return (
     <div
