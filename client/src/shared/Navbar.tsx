@@ -1,12 +1,12 @@
 import React from "react";
-import Icon from "../components/UI/Icon";
-import Modal from "../components/UI/Modal";
-import useAddApi from "../hooks/useAddApi";
-import { addContact } from "../api/contactApi";
-import { icons } from "../utils/icons";
+import Icon from "components/UI/Icon";
+import Modal from "components/UI/Modal";
+import useAddApi from "hooks/useAddApi";
+import { addContact } from "api/contactApi";
+import { icons } from "utils/icons";
 
 const Navbar = () => {
-  const { mutate, isError, isLoading } = useAddApi({
+  const { mutate } = useAddApi({
     fetchApi: addContact,
     category: "contact",
   });
@@ -19,14 +19,14 @@ const Navbar = () => {
           <Icon src={icons.settings} variant="icon" />
           <Icon src={icons.icon} variant="icon" />
           <Modal mutate={mutate}>
-            <button className="flex justify-between items-center gap-x-[13px] bg-black-60 rounded-lg sm:rounded-full px-[12px] py-[16px] max-w-[120px] h-[40px] border-[1px] border-black-20 hover:bg-black-50 active:bg-black-40
-            ">
-              {/* //  bg-gradient-to-t from-black-10 to-black-60/70 bg-gradient-180 */}
-              <div className="block sm:hidden md:block">
-                <Icon src={icons.add} variant="button" />
-              </div>
-              <p className="body hidden sm:block"> Add new</p>
-            </button>
+            <div className="w-auto p-[1px] rounded-lg sm:rounded-full bg-gradient-to-t from-black-20/0 to-black-20/100 bg-gradient-180">
+              <button className="flex justify-between items-center gap-x-[13px] bg-black-60 rounded-lg sm:rounded-full px-[12px] py-[16px] lg:w-[120px] h-[40px]  hover:bg-black-50 active:bg-black-40">
+                <div className="block sm:hidden md:block">
+                  <Icon src={icons.add} variant="button" />
+                </div>
+                <p className="body hidden sm:block"> Add new</p>
+              </button>
+            </div>
           </Modal>
         </div>
       </div>

@@ -2,7 +2,6 @@ import add from "../assets/icons/add.png";
 import backArrow from "../assets/icons/backArrow.png";
 import call from "../assets/icons/call.png";
 import change from "../assets/icons/change.png";
-
 import Delete from "../assets/icons/delete.png";
 import favourite from "../assets/icons/favourite.png";
 import icon from "../assets/icons/icon.png";

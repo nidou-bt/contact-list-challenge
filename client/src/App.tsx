@@ -1,7 +1,9 @@
-import Home from "./pages/Home";
-import Navbar from "./shared/Navbar";
-import Icon from "./components/UI/Icon";
-import { icons } from "./utils/icons";
+import Home from "pages/Home";
+import Navbar from "shared/Navbar";
+import Icon from "components/UI/Icon";
+import { icons } from "utils/icons";
+
+const className = "box flex justify-end items-center border-r-[1px] border-t-0 border-b-0"
 
 function App() {
   return (
@@ -9,11 +11,11 @@ function App() {
       <div className="box" />
       <div className="box" />
       <div className="box" />
-      <div className="box flex justify-end pr-[3vw] sm:pr-[35px] items-center border-r-[1px] border-t-0 border-b-0 ">
+      <div className={`pr-[3vw] sm:pr-[35px] ${className}`}>
         <Icon src={icons.backArrow} variant="icon" />
       </div>
       <Navbar />
-      <div className="box flex justify-start pl-[3vw] sm:pl-[35px] items-center border-r-[1px] border-t-0 border-b-0">
+      <div className={`pl-[3vw] sm:pl-[35px] ${className}`}>
         <Icon src={icons.lightMode} variant="icon" />
       </div>
       <div className="box" />

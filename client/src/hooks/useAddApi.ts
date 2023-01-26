@@ -4,7 +4,7 @@ import {
   UseMutationResult,
   useQueryClient,
 } from "@tanstack/react-query";
-import { IContact } from "../types/type";
+import { IContact } from "types/type";
 
 interface IProps {
   category: string;

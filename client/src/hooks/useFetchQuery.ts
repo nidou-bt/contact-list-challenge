@@ -1,4 +1,4 @@
-import { IContact } from "../types/type";
+import { IContact } from "types/type";
 import { QueryFunction, useQuery, UseQueryResult } from "@tanstack/react-query";
 
 interface IProps {

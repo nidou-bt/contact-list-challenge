@@ -1,13 +1,12 @@
 import React, { useState, memo } from "react";
-import { IContact } from "../../types/type";
-import Icon from "../../components/UI/Icon";
+import { IContact } from "types/type";
+import Icon from "components/UI/Icon";
 import DropDown from "./DropDown";
-import useDeleteApi from "../../hooks/useDeleteApi";
-import { deleteContact, updateContact } from "../../api/contactApi";
-import { getPathImg } from "../../utils/getPath";
-import useUpdateApi from "../../hooks/useUpdateApi";
-import Modal from "../UI/Modal";
-import { icons } from "../../utils/icons";
+import useDeleteApi from "hooks/useDeleteApi";
+import { deleteContact, updateContact } from "api/contactApi";
+import { getPathImg } from "utils/getPath";
+import useUpdateApi from "hooks/useUpdateApi";
+import { icons } from "utils/icons";
 
 const ContactCard = (contact: IContact) => {
   const [isHover, setIsHover] = useState<boolean>(false);
@@ -26,7 +25,7 @@ const ContactCard = (contact: IContact) => {
 
   const updateHover = () => {
     setIsHover(false);
-  }
+  };
 
   return (
     <div
@@ -56,9 +55,7 @@ const ContactCard = (contact: IContact) => {
             : "hidden"
         }
       >
-        <Modal contact={contact} mutate={updateMutate}>
-          <Icon src={icons.mute} variant="icon" />
-        </Modal>
+        <Icon src={icons.mute} variant="icon" />
         <Icon src={icons.call} variant="icon" />
         <DropDown
           deleteMutate={deleteMutate}

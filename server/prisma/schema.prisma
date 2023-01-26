@@ -10,7 +10,7 @@ datasource db {
 model Contact {
   id    Int     @id @default(autoincrement())
   name  String
-  emailAddress String  @unique
-  phoneNumber String
+  emailAddress String @default("")
+  phoneNumber String @default("")
   picture String @default("")
 }

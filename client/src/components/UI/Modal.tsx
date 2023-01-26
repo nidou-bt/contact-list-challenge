@@ -1,4 +1,4 @@
-import { Fragment, useState, useRef, ChangeEvent, useEffect, Dispatch, forwardRef } from "react";
+import { Fragment, useState, useRef, ChangeEvent, forwardRef } from "react";
 import { UseMutateFunction } from "@tanstack/react-query";
 import { Dialog, DialogBody } from "@material-tailwind/react";
 import FormInput from "./FormInput";
@@ -22,21 +22,26 @@ type TProps = {
   >;
 
 };
+const initialState = {
+  emailAddress: "",
+  name: "",
+  phoneNumber: "",
+  picture: "",
+};
 
 const Modal = forwardRef<HTMLInputElement, TProps>(({ children, contact, mutate }, ref) => {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
   const [newContact, setNewContact] = useState<IContact>(
-    contact || {
-      emailAddress: "",
-      name: "",
-      phoneNumber: "",
-      picture: "",
-    }
+    contact || initialState
   );
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => {
+    setTimeout(() => {
+      setOpen(!open)
+    }, 500);
+  };
   const handleClick = () => {
     hiddenInput.current!.click();
   };
@@ -51,6 +56,8 @@ const Modal = forwardRef<HTMLInputElement, TProps>(({ children, contact, mutate 
   const handleDone = () => {
     setOpen(false);
     mutate!({ ...newContact, picture: file!, id: contact?.id });
+    setNewContact(initialState);
+    setFile(undefined)
   };
 
   const handleDelete = () => {
@@ -58,12 +65,16 @@ const Modal = forwardRef<HTMLInputElement, TProps>(({ children, contact, mutate 
     setFile(undefined);
   };
 
+  const handleClose = () => {
+    handleOpen();
+  }
+
   return (
     <Fragment>
       <a onClick={handleOpen}>{children}</a>
       <Dialog
         open={open}
-        handler={handleOpen}
+        handler={(handleOpen)}
         className="bg-[#000000]/40 h-[100vh] w-[100vw] flex m-auto"
       >
         <DialogBody
@@ -80,7 +91,7 @@ const Modal = forwardRef<HTMLInputElement, TProps>(({ children, contact, mutate 
                   ? getPathImg(newContact.picture as string)
                   : icons.profile
               }
-              className="w-[88px] h-[88px] rounded-full"
+              className="w-[88px] h-[88px] rounded-full object-cover"
               alt="profile"
             />
             <div>
@@ -155,12 +166,13 @@ const Modal = forwardRef<HTMLInputElement, TProps>(({ children, contact, mutate 
             }}
           />
           <div className="flex justify-end gap-[24px] absolute m-[24px] right-[0px] bottom-[0px] items-center  ">
-            <button className="capitalize button" onClick={handleOpen}>
+            <button className="capitalize button" onClick={handleClose}>
               Cancel
             </button>
             <button
               className="capitalize h-[40px] bg-[#262626] rounded-lg px-[16px] py-[8px] button hover:bg-black-50"
               onClick={handleDone}
+              disabled={newContact.name.length < 1 ? true : false}
             >
               Done
             </button>

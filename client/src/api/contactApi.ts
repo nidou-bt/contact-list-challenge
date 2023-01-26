@@ -39,7 +39,7 @@ export const addContact = async ({
   if (!!picture) {
     formData.append("contactImg", picture);
   }
-  // console.log(Object.fromEntries(formData));
+  console.log(Object.fromEntries(formData));
 
   try {
     const { data } = await axiosC.post("/api/contact", formData);
