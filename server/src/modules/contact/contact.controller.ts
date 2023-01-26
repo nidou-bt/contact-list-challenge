@@ -21,15 +21,13 @@ export const getContacts = async (req: Request, res: Response) => {
 export const addContact = async (req: Request, res: Response) => {
   try {
     const body: IContact = req.body;
-    console.log('data', req?.file?.filename)
     if (req.file) {
       body.picture = req.file.filename;
     }
-    body.phoneNumber = body.phoneNumber;
+
     const { contact } = await createContactsServ(body);
     return res.status(200).json({ data: contact });
   } catch (err) {
-    console.log("err", err);
     return res
       .status(400)
       .json({ err: "Something went wrong, please try again" });

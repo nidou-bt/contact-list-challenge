@@ -9,6 +9,7 @@ import lightMode from "../assets/icons/lightMode.png";
 import more from "../assets/icons/More.png";
 import mute from "../assets/icons/Mute.png";
 import profile from "../assets/icons/profileS.png";
+import picture from "../assets/icons/pictureL.png";
 import search from "../assets/icons/search.png";
 import settings from "../assets/icons/settings.png";
 
@@ -24,6 +25,7 @@ export const icons = {
   more,
   mute,
   profile,
+  picture,
   search,
   settings,
 };

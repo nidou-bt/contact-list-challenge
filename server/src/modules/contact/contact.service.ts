@@ -26,6 +26,9 @@ export const updateContactsServ = async ({
     where: { id: id },
     data: body,
   });
+  if (!contact) {
+    throw new Error();
+  }
   return { contact };
 };
 

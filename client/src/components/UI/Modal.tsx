@@ -91,9 +91,9 @@ const Modal = forwardRef<HTMLInputElement, TProps>(
                     ? URL.createObjectURL(file)
                     : newContact?.picture
                     ? getPathImg(newContact.picture as string)
-                    : icons.profile
+                    : icons.picture
                 }
-                className="w-[88px] h-[88px] rounded-full object-cover"
+                className="w-[88px] h-[88px] rounded-full object-cover border-[1px] border-black-70"
                 alt="profile"
               />
               <div>

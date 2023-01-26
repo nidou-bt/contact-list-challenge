@@ -8,7 +8,10 @@ import {
 } from "../modules/contact/contact.controller";
 const router: Router = express.Router();
 
-router.route("/").get(getContacts).post(upload.single("contactImg"), addContact);
+router
+  .route("/")
+  .get(getContacts)
+  .post(upload.single("contactImg"), addContact);
 router
   .route("/:contactId")
   .put(upload.single("contactImg"), updateContact)
