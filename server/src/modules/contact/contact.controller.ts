@@ -41,7 +41,7 @@ export const deleteContact = async (req: Request, res: Response) => {
     const { contactId } = req.params;
     const id = contactId;
     const { contact } = await deleteContactsServ({ id });
-    return res.status(200).json({ contact });
+    return res.status(200).json({ data: contact });
   } catch (err) {
     return res
       .status(400)
@@ -57,12 +57,9 @@ export const updateContact = async (req: Request, res: Response) => {
     if (req.file) {
       body.picture = req.file.filename;
     }
-    if (body.phoneNumber) {
-      body.phoneNumber = Number(body.phoneNumber);
-    }
 
     const { contact } = await updateContactsServ(body);
-    return res.status(200).json({ contact });
+    return res.status(200).json({ data: contact });
   } catch (err) {
     console.log(err);
     return res

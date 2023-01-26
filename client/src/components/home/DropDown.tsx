@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import setting from "../../assets/icons/settings.png";
 import favourite from "../../assets/icons/favourite.png";
@@ -7,8 +7,10 @@ import Button from "../UI/Button";
 import Modal from "../UI/Modal";
 
 function DropDown({ children, deleteMutate, updateMutate, contact }: any) {
+
   return (
     <Menu as="div" className="relative inline-block text-left ">
+      {({ close }) => (
       <>
         <div>
           <Menu.Button className=" flex justify-center items-center focus:ring-offset-gray-100 w-[40px] h-[40px] hover:bg-black-80 rounded-lg">
@@ -24,11 +26,12 @@ function DropDown({ children, deleteMutate, updateMutate, contact }: any) {
           leave="transition ease-in duration-75"
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
+          
         >
-          <Menu.Items className="absolute right-0 lg:left-0 top-[40px]  z-10 w-[90vw] max-w-[219px] origin-top-right rounded-lg bg-black-80 shadow-lg ring-black ring-opacity-5  focus:outline-none active:ring-offset-current">
-            <div className="">
+          <Menu.Items className="absolute right-0 lg:left-0 top-[40px] border-t-4 border-black-100 z-10 w-[90vw] max-w-[219px] origin-top-right rounded-lg bg-black-80 shadow-lg ring-black ring-opacity-5  focus:outline-none active:ring-offset-current">
+            <div className="" onMouseLeave={close}>
               <Menu.Item>
-                <Modal>
+                <Modal contact={contact} mutate={updateMutate}>
                   <Button
                     src={setting}
                     active={false}
@@ -55,7 +58,7 @@ function DropDown({ children, deleteMutate, updateMutate, contact }: any) {
             </div>
           </Menu.Items>
         </Transition>
-      </>
+      </>)}
     </Menu>
   );
 }

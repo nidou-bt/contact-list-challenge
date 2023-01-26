@@ -53,9 +53,6 @@ export const updateContact = async ({
   ...body
 }: IContact & { picture: File }): Promise<IContact | undefined> => {
   let formData = new FormData();
-  // Object.keys(body).forEach((el, i) =>
-  //   formData.append(`typeJob[${i}]`, body[Object.keys(body)[i]])
-  // );
   formData.append("name", body.name);
   formData.append("emailAddress", body.emailAddress);
   formData.append("phoneNumber", body.phoneNumber.toString());
@@ -64,7 +61,7 @@ export const updateContact = async ({
   }
 
   try {
-    const { data } = await axiosC.post("/api/contact", formData);
+    const { data } = await axiosC.put(`/api/contact/${body.id}`, formData);
     return data.data;
   } catch (err) {
     console.log(err);

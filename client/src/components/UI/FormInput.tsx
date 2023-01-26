@@ -12,6 +12,7 @@ const checkIfNumber = (event: any) => {
 }
 
 function FormInput({ children, ...props }: Props): JSX.Element {
+
   return (
     <div className="">
       <label

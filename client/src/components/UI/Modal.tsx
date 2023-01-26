@@ -30,14 +30,12 @@ const Modal = ({ children, contact, mutate }: TProps) => {
   const [open, setOpen] = useState(false);
   const hiddenInput = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File>();
-  const [newContact, setNewContact] = useState<IContact>(
-    contact || {
-      emailAddress: "",
-      name: "",
-      phoneNumber: "",
-      picture: "",
-    }
-  );
+  const [newContact, setNewContact] = useState<IContact>({
+    emailAddress: "",
+    name: "",
+    phoneNumber: "",
+    picture: "",
+  });
 
   useEffect(() => {
     if (!open) {
@@ -48,6 +46,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
   const cleanModal = () => {
     setFile(undefined);
     setNewContact({
+      id:16,
       emailAddress: "",
       name: "",
       phoneNumber: "",
@@ -103,7 +102,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
               alt="profile"
             />
             <div>
-              {!file && (!contact?.picture || true) ? (
+              {!file && !contact?.picture ? (
                 <Button
                   className="bg-black-50 button flex items-center gap-[12px] px-[16px] py-[8px] max-w-[164px] justify-between"
                   src={add}
@@ -138,6 +137,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
             type="text"
             placeholder={contact?.name ?? "Jamie Wright"}
             onChange={handelChange}
+            value={newContact.name}
           >
             Name
           </FormInput>
@@ -145,8 +145,9 @@ const Modal = ({ children, contact, mutate }: TProps) => {
             id="phoneNumber"
             name="phoneNumber"
             type="number"
-            placeholder={contact?.phoneNumber?.toString() ?? "+01 234 5678"}
+            placeholder={newContact.phoneNumber.toString() ?? "+01 234 5678"}
             onChange={handelChange}
+
           >
             Phone Number
           </FormInput>
@@ -154,7 +155,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
             id="emailAddress"
             name="emailAddress"
             type="text"
-            placeholder={contact?.emailAddress ?? "jamie.wright@mail.com"}
+            placeholder={newContact.emailAddress ?? "jamie.wright@mail.com"}
             onChange={handelChange}
           >
             Email Adress

@@ -19,14 +19,14 @@ const useAddApi = ({ category, fetchApi }: IProps) => {
     isLoading,
   }: UseMutationResult<IContact | undefined, void, IContact & { picture: File }> = useMutation({
     mutationFn: fetchApi,
+    mutationKey: [category],
     // onError: (error, variables, { id }) => {
     //   console.log(`rolling back optimistic delete with id ${id}`);
     // },
-    mutationKey: [category],
     onSuccess: (data, variables, context) => {
       setTimeout(() => {
         if (data) {
-          queryClient.setQueryData<IContact[]>(["contact"], (oldQueryData) => {
+          queryClient.setQueryData<IContact[]>([category], (oldQueryData) => {
             if (oldQueryData) {
               return [...oldQueryData, data];
             } else {
