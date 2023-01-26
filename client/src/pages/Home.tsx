@@ -1,9 +1,7 @@
 import React from "react";
-import "./home.css";
 import { getContactList } from "../api/contactApi";
 import useFetchQuery from "../hooks/useFetchQuery";
 import ContactCard from "../components/home/ContactCard";
-
 
 const Home = () => {
   const { data, isError, isLoading } = useFetchQuery({

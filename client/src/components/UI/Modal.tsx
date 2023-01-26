@@ -68,7 +68,7 @@ const Modal = ({ children, contact, mutate }: TProps) => {
 
   const handleDone = () => {
     setOpen(false);
-    mutate!({ ...newContact, picture: file! });
+    mutate!({ ...newContact, picture: file!, id:contact?.id });
   };
 
   const handleDelete = () => {

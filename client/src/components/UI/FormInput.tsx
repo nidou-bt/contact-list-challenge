@@ -24,7 +24,7 @@ function FormInput({ children, ...props }: Props): JSX.Element {
 
       <input
         {...props}
-        className="block w-full max-w-[390px] h-[40px] px-[12px] py-[11px] font-Lexend font-normal not-italic text-[12px] leading-[18px] text-white focus:text-white focus:bg-black-10 bg-black-60 focus:bg-black rounded-lg "
+        className="block w-full max-w-[390px] h-[40px] px-[12px] py-[11px] font-Lexend font-normal not-italic text-[12px] leading-[18px] text-white focus:text-white focus:bg-black-60 bg-black-80 focus:bg-black focus:border-[1px] focus:border-black-10 rounded-lg border-[1px] border-black-30"
         onKeyDown={(event) => props.type==="number" ? checkIfNumber(event): event}
       />
     </div>

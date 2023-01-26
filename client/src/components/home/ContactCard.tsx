@@ -12,9 +12,8 @@ import { getPathImg } from "../../utils/getPath";
 import useUpdateApi from "../../hooks/useUpdateApi";
 import Modal from "../UI/Modal";
 
-interface IProps extends IContact {}
 
-const ContactCard = (contact: IProps) => {
+const ContactCard = (contact: IContact) => {
   const [isHover, setIsHover] = useState<boolean>(false);
   const {
     mutate: deleteMutate,
