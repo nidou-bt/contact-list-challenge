@@ -1,7 +1,7 @@
 import React, { Fragment, forwardRef } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { UseMutateFunction } from "@tanstack/react-query";
-import Button from "../UI/Button";
+import Button from "../UI/Button1";
 import Modal from "../UI/Modal";
 import { IContact } from "types/type";
 import { icons } from "utils/icons";

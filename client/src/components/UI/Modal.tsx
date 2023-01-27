@@ -4,7 +4,7 @@ import { Dialog, DialogBody } from "@material-tailwind/react";
 import FormInput from "./FormInput";
 import { IContact } from "types/type";
 import Icon from "./Icon";
-import Button from "./Button";
+import Button from "./Button1";
 import { getPathImg } from "utils/getPath";
 import { icons } from "utils/icons";
 
