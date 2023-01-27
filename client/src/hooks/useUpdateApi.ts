@@ -10,7 +10,7 @@ interface IProps {
   category: string;
   fetchApi: MutationFunction<
     IContact | undefined,
-    IContact & { picture: File }
+    IContact & { file?: File }
   >;
 }
 
@@ -23,7 +23,7 @@ const useUpdateApi = ({ category, fetchApi }: IProps) => {
   }: UseMutationResult<
     IContact | undefined,
     void,
-    IContact & { picture: File }
+    IContact & { file?: File }
   > = useMutation({
     mutationFn: fetchApi,
     mutationKey: [category],

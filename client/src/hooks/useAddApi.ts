@@ -8,7 +8,7 @@ import { IContact } from "types/type";
 
 interface IProps {
   category: string;
-  fetchApi: MutationFunction<IContact | undefined, IContact & { picture: File }>;
+  fetchApi: MutationFunction<IContact | undefined, IContact & { file?: File }>;
 }
 
 const useAddApi = ({ category, fetchApi }: IProps) => {
@@ -17,7 +17,7 @@ const useAddApi = ({ category, fetchApi }: IProps) => {
     mutate,
     isError,
     isLoading,
-  }: UseMutationResult<IContact | undefined, void, IContact & { picture: File }> = useMutation({
+  }: UseMutationResult<IContact | undefined, void, IContact & { file?: File }> = useMutation({
     mutationFn: fetchApi,
     mutationKey: [category],
     // onError: (error, variables, { id }) => {

@@ -16,7 +16,7 @@ type TProps = {
     IContact | undefined,
     void,
     IContact & {
-      picture: File;
+      file?: File;
     },
     unknown
   >;
@@ -55,7 +55,11 @@ const Modal = forwardRef<HTMLInputElement, TProps>(
 
     const handleDone = () => {
       setOpen(false);
-      mutate!({ ...newContact, picture: file!, id: contact?.id });
+      if (!!file) {
+        mutate!({ ...newContact, picture:"",file: file!, id: contact?.id });
+      } else {
+        mutate!({ ...newContact, picture: newContact.picture, id: contact?.id });
+      }
       if (!contact) {
         setNewContact(initialState);
         setFile(undefined);

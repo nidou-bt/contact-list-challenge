@@ -29,15 +29,15 @@ export const deleteContact = async ({
 };
 
 export const addContact = async ({
-  picture,
+  file,
   ...body
-}: IContact & { picture: File }): Promise<IContact | undefined> => {
+}: IContact & { file?: File }): Promise<IContact | undefined> => {
   let formData = new FormData();
   formData.append("name", body.name);
   formData.append("emailAddress", body.emailAddress);
   formData.append("phoneNumber", body.phoneNumber.toString());
-  if (!!picture) {
-    formData.append("contactImg", picture);
+  if (!!file) {
+    formData.append("contactImg", file);
   }
   console.log(Object.fromEntries(formData));
 
@@ -49,9 +49,9 @@ export const addContact = async ({
   }
 };
 export const updateContact = async ({
-  picture,
+  file,
   ...body
-}: IContact & { picture: File }): Promise<IContact | undefined> => {
+}: IContact & { file?: File }): Promise<IContact | undefined> => {
   let formData = new FormData();
   if (body.name) {
     formData.append("name", body.name);
@@ -62,10 +62,10 @@ export const updateContact = async ({
   if (body.phoneNumber) {
     formData.append("phoneNumber", body.phoneNumber.toString());
   }
-  if (!!picture) {
-    formData.append("contactImg", picture);
-  } else {
-    formData.append("picture", "");
+  if (file) {
+    formData.append("contactImg", file)
+  } else if (body.picture === "") {
+    formData.append("picture", "")
   }
   // console.log(Object.fromEntries(formData));
   try {

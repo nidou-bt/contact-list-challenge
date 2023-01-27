@@ -3,5 +3,5 @@ export interface IContact {
   name: string;
   phoneNumber: string;
   emailAddress: string;
-  picture: unknown;
+  picture: string;
 }

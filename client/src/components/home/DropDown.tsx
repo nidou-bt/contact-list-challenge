@@ -21,7 +21,7 @@ type TProps = {
     IContact | undefined,
     void,
     IContact & {
-      picture: File;
+      file?: File;
     },
     unknown
   >;
