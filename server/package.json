@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "contact list",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "rimraf dist && npx tsc -w",
     "dev": "node dist/index.js",
@@ -31,7 +31,8 @@
     "rimraf": "^4.1.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "prisma": "^5.9.1"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"
